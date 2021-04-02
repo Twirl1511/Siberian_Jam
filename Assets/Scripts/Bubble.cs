@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Bubble : MonoBehaviour
 {
-
+    [SerializeField] private float _pushForce;
     // Gravity Scale editable on the inspector
     // providing a gravity scale per object
 
@@ -34,7 +34,14 @@ public class Bubble : MonoBehaviour
     {
         if(collision.gameObject.TryGetComponent(out Bubble bubble))
         {
-            Destroy(bubble.gameObject, 1f);
+            Destroy(bubble.gameObject, 0.5f);
+        }
+        if(collision.gameObject.TryGetComponent(out Rigidbody rb))
+        {
+            Vector3 direction = (rb.transform.position - transform.position).normalized;
+            direction *= _pushForce;
+            direction.x *= 10;
+            rb.AddForce(direction, ForceMode.Force);
         }
         
     }

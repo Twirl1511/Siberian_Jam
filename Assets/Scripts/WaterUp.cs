@@ -18,6 +18,12 @@ public class WaterUp : MonoBehaviour
 
     private void Update()
     {
-        //transform.position = Vector3.Lerp(_startPosition, _currentLevel.position, Time.deltaTime * _speed);
+        if(_currentLevel != null)
+        {
+            transform.position = Vector3.Lerp(_startPosition, _currentLevel.position, Time.deltaTime * _speed);
+        }
+        
     }
+
+
 }

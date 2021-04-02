@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1773185805619134468}
   - component: {fileID: 3323802600378060361}
   - component: {fileID: 628116287261897184}
-  - component: {fileID: 5049483458865299925}
+  - component: {fileID: -2311336737205999854}
   m_Layer: 0
   m_Name: bubble
   m_TagString: Bubble
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1773185805619134465}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.65, y: 0.89, z: -2.1807613}
-  m_LocalScale: {x: 0.2556142, y: 0.2556142, z: 0.2556142}
+  m_LocalScale: {x: 0.687925, y: 0.687925, z: 0.687925}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -112,9 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca964b484e6540c448ee5db99d6869cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityScale: -3.39
---- !u!65 &5049483458865299925
-BoxCollider:
+  _pushForce: 50
+  gravityScale: -3.4
+--- !u!136 &-2311336737205999854
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -123,6 +124,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

@@ -15,7 +15,7 @@ public class BubbleControllerScript : MonoBehaviour
     private float x;
     private float y;
     private float z;
-    private Rigidbody _bubbleRigi;
+    private Bubble _bubbleRigi;
     private float lifeTime;
     public AnimationCurve GravityCurve;
 
@@ -26,7 +26,7 @@ public class BubbleControllerScript : MonoBehaviour
     void Start()
     {
         _flag = true;
-        _bubbleRigi = BubblePrefab.GetComponent<Rigidbody>();
+        _bubbleRigi = BubblePrefab.GetComponent<Bubble>();
         SetDefaultParameters();
     }
 
@@ -69,12 +69,13 @@ public class BubbleControllerScript : MonoBehaviour
         y = _defaultSize;
         z = _defaultSize;
         lifeTime = _defaultLifeTime;
-        _bubbleRigi.drag = _defaultDrag;
+        //_bubbleRigi.drag = _defaultDrag;
+        _bubbleRigi.gravityScale = -3.40f;
     }
 
     public void SetParameters()
     {
-        //_bubbleRigi.gravityScale = -GravityCurve.Evaluate(x) * _gravityModifier;
+        _bubbleRigi.gravityScale = -GravityCurve.Evaluate(x) * _gravityModifier;
         lifeTime = 10;
     }
 
