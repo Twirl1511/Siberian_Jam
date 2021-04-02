@@ -11,19 +11,21 @@ public class BubbleControllerScript : MonoBehaviour
     [SerializeField] private float _defaultDrag;
     [SerializeField] private float _increaseSizePerSecond;
     [SerializeField] private float _gravityModifier;
-    float x;
-    float y;
-    float z;
-    Rigidbody2D rb;
-    float lifeTime;
+    [SerializeField] private float _additionalVelocity;
+    private float x;
+    private float y;
+    private float z;
+    private Rigidbody2D _bubbleRigi;
+    private Rigidbody2D _fishRigi;
+    private float lifeTime;
     public AnimationCurve GravityCurve;
 
     void Start()
     {
-        rb = BubblePrefab.GetComponent<Rigidbody2D>();
+        _bubbleRigi = BubblePrefab.GetComponent<Rigidbody2D>();
+        _fishRigi = GetComponent<Rigidbody2D>();
         SetDefaultParameters();
     }
-
 
     void Update()
     {
@@ -35,10 +37,9 @@ public class BubbleControllerScript : MonoBehaviour
             //    lifeTime = 2;
             //}
             SetParameters();
-
-            Destroy(Instantiate(BubblePrefab, (Vector2)BubbleJoint.position, Quaternion.identity), lifeTime);
+            GameObject bubble = Instantiate(BubblePrefab, (Vector2)BubbleJoint.position, Quaternion.identity);
+            Destroy(bubble, lifeTime);
             SetDefaultParameters();
-            
         }
 
         if (Input.GetMouseButton(0))
@@ -56,14 +57,14 @@ public class BubbleControllerScript : MonoBehaviour
         y = _defaultSize;
         z = _defaultSize;
         lifeTime = _defaultLifeTime;
-        rb.drag = _defaultDrag;
+        _bubbleRigi.drag = _defaultDrag;
     }
 
     public void SetParameters()
     {
         //Easing.Evaluate(x);
         //rb.gravityScale = -_gravityScale * x;
-        rb.gravityScale = -GravityCurve.Evaluate(x) * _gravityModifier;
+        _bubbleRigi.gravityScale = -GravityCurve.Evaluate(x) * _gravityModifier;
         lifeTime = 10;
     }
 }
