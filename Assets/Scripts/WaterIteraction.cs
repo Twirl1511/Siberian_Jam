@@ -28,14 +28,14 @@ public class WaterIteraction : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.CompareTag("Block"))
+        if (collision.TryGetComponent(out Block block))
         {
             Rigidbody rigi = collision.GetComponent<Rigidbody>();
 
             rigi.mass *= _outOfWaterGravity;
             _objectsOutOfWater.Add(rigi);
         }
-        if (collision.CompareTag("Bubble"))
+        if (collision.TryGetComponent(out Bubble bubble))
         {
             Destroy(collision.gameObject);
         }
@@ -43,7 +43,7 @@ public class WaterIteraction : MonoBehaviour
 
     private void OnTriggerExit(Collider collision)
     {
-        if (collision.TryGetComponent<Block>(out Block block))
+        if (collision.TryGetComponent(out Block block))
         {
             Rigidbody rigi = block.GetComponent<Rigidbody>();
 
