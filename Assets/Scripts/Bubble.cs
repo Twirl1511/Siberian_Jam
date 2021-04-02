@@ -34,7 +34,7 @@ public class Bubble : MonoBehaviour
     {
         if(collision.gameObject.TryGetComponent(out Bubble bubble))
         {
-            Destroy(bubble.gameObject, 0.5f);
+            //Destroy(bubble.gameObject, 0.3f);
         }
         if(collision.gameObject.TryGetComponent(out Rigidbody rb))
         {
