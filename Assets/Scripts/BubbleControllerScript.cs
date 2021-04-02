@@ -15,7 +15,8 @@ public class BubbleControllerScript : MonoBehaviour
     float z;
     Rigidbody2D rb;
     float lifeTime;
-
+    [SerializeField] private float _gravityScale;
+    public AnimationCurve Easing;
 
     void Start()
     {
@@ -28,12 +29,12 @@ public class BubbleControllerScript : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
-            if (x > 0.7f)
-            {
-                rb.drag = 5;
-                lifeTime = 2;
-            }
-            
+            //if (x > 0.7f)
+            //{
+            //    rb.drag = 5;
+            //    lifeTime = 2;
+            //}
+            SetParameters();
 
             //Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Destroy(Instantiate(BubblePrefab, (Vector2)BubbleJoint.position, Quaternion.identity), lifeTime);
@@ -59,12 +60,11 @@ public class BubbleControllerScript : MonoBehaviour
         rb.drag = _defaultDrag;
     }
 
-    //public void SetParameters()
-    //{
-    //    if (x > 0.7f)
-    //    {
-    //        rb.drag = 5;
-    //        lifeTime = 2;
-    //    }
-    //}
+    public void SetParameters()
+    {
+        Easing.Evaluate(x);
+        //rb.gravityScale = -_gravityScale * x;
+        rb.gravityScale = -Easing.Evaluate(x) * 2;
+        lifeTime = 10;
+    }
 }
