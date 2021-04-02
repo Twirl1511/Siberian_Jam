@@ -29,4 +29,13 @@ public class Bubble : MonoBehaviour
         Vector3 gravity = globalGravity * gravityScale * Vector3.up;
         m_rb.AddForce(gravity, ForceMode.Acceleration);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.TryGetComponent(out Bubble bubble))
+        {
+            Destroy(bubble.gameObject, 1f);
+        }
+        
+    }
 }
