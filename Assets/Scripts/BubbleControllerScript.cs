@@ -4,27 +4,26 @@ using UnityEngine;
 
 public class BubbleControllerScript : MonoBehaviour
 {
+    [SerializeField] private Transform BubbleJoint;
     [SerializeField] private GameObject BubblePrefab;
+    [SerializeField] private float _defaultSize;
+    [SerializeField] private float _defaultLifeTime;
+    [SerializeField] private float _defaultDrag;
+    [SerializeField] private float _increaseSizePerSecond;
     float x;
     float y;
     float z;
     Rigidbody2D rb;
     float lifeTime;
-    [SerializeField] private float _defaultSize;
-    [SerializeField] private float _defaultLifeTime;
-    [SerializeField] private float _defaultDrag;
-    [SerializeField] private float _increaseSizePerSecond;
 
 
     void Start()
     {
-        SetDefaultParameters();
         rb = BubblePrefab.GetComponent<Rigidbody2D>();
+        SetDefaultParameters();
     }
 
-    
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonUp(0))
@@ -36,8 +35,8 @@ public class BubbleControllerScript : MonoBehaviour
             }
             
 
-            Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Destroy(Instantiate(BubblePrefab, cursorPos, Quaternion.identity), lifeTime);
+            //Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Destroy(Instantiate(BubblePrefab, (Vector2)BubbleJoint.position, Quaternion.identity), lifeTime);
             SetDefaultParameters();
             
         }
