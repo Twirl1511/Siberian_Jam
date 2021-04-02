@@ -15,15 +15,18 @@ public class BubbleControllerScript : MonoBehaviour
     private float x;
     private float y;
     private float z;
-    private Rigidbody2D _bubbleRigi;
-    private Rigidbody2D _fishRigi;
+    private Rigidbody _bubbleRigi;
     private float lifeTime;
     public AnimationCurve GravityCurve;
 
+    [Range(1, 5),SerializeField] private float _timeToCreateBubble;
+    private float _time;
+    private bool _flag;
+
     void Start()
     {
-        _bubbleRigi = BubblePrefab.GetComponent<Rigidbody2D>();
-        _fishRigi = GetComponent<Rigidbody2D>();
+        _flag = true;
+        _bubbleRigi = BubblePrefab.GetComponent<Rigidbody>();
         SetDefaultParameters();
     }
 
@@ -31,23 +34,32 @@ public class BubbleControllerScript : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
-            //if (x > 0.7f)
-            //{
-            //    rb.drag = 5;
-            //    lifeTime = 2;
-            //}
             SetParameters();
-            GameObject bubble = Instantiate(BubblePrefab, (Vector2)BubbleJoint.position, Quaternion.identity);
-            Destroy(bubble, lifeTime);
+            if (_flag)
+            {
+                Spawn();
+                _time = 0;
+            }
+            
             SetDefaultParameters();
+            _flag = true;
         }
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && _flag)
         {
+            _time += Time.deltaTime;
             x += _increaseSizePerSecond * Time.deltaTime;
             y += _increaseSizePerSecond * Time.deltaTime;
             z += _increaseSizePerSecond * Time.deltaTime;
             BubblePrefab.transform.localScale = new Vector3(x,y,z);
+
+            if(_time >= _timeToCreateBubble)
+            {
+                Spawn();
+                SetDefaultParameters();
+                _flag = false;
+                _time = 0;
+            }
         }
 
     }
@@ -62,9 +74,13 @@ public class BubbleControllerScript : MonoBehaviour
 
     public void SetParameters()
     {
-        //Easing.Evaluate(x);
-        //rb.gravityScale = -_gravityScale * x;
-        _bubbleRigi.gravityScale = -GravityCurve.Evaluate(x) * _gravityModifier;
+        //_bubbleRigi.gravityScale = -GravityCurve.Evaluate(x) * _gravityModifier;
         lifeTime = 10;
+    }
+
+    private void Spawn()
+    {
+        GameObject bubble = Instantiate(BubblePrefab, (Vector2)BubbleJoint.position, Quaternion.identity);
+        Destroy(bubble, lifeTime);
     }
 }

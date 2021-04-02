@@ -6,7 +6,7 @@ public class WaterIteraction : MonoBehaviour
 {
     [SerializeField] private WaterUp Water;
     [SerializeField] private float _outOfWaterGravity;
-    private List<Rigidbody2D> _objectsOutOfWater = new List<Rigidbody2D>();
+    private List<Rigidbody> _objectsOutOfWater = new List<Rigidbody>();
 
     private void Start() 
     {
@@ -15,7 +15,7 @@ public class WaterIteraction : MonoBehaviour
 
     private void CheckConditions()
     {
-        foreach(Rigidbody2D r in _objectsOutOfWater)
+        foreach(Rigidbody r in _objectsOutOfWater)
         {
             Block b = r.GetComponent<Block>();
             if(r.velocity.magnitude <= 0f && b.IsActive)
@@ -26,12 +26,13 @@ public class WaterIteraction : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.CompareTag("Block"))
         {
-            Rigidbody2D rigi = collision.GetComponent<Rigidbody2D>();
-            rigi.gravityScale *= _outOfWaterGravity;
+            Rigidbody rigi = collision.GetComponent<Rigidbody>();
+
+            rigi.mass *= _outOfWaterGravity;
             _objectsOutOfWater.Add(rigi);
         }
         if (collision.CompareTag("Bubble"))
@@ -40,14 +41,15 @@ public class WaterIteraction : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit(Collider collision)
     {
         if (collision.TryGetComponent<Block>(out Block block))
         {
-            Rigidbody2D rigi = block.GetComponent<Rigidbody2D>();
-            rigi.gravityScale /= _outOfWaterGravity;
+            Rigidbody rigi = block.GetComponent<Rigidbody>();
 
-            if(_objectsOutOfWater.Contains(rigi))
+            rigi.mass /= _outOfWaterGravity;
+
+            if (_objectsOutOfWater.Contains(rigi))
                 _objectsOutOfWater.Remove(rigi);
                 
             if(!block.IsActive)
