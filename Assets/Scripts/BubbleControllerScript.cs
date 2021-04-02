@@ -10,13 +10,13 @@ public class BubbleControllerScript : MonoBehaviour
     [SerializeField] private float _defaultLifeTime;
     [SerializeField] private float _defaultDrag;
     [SerializeField] private float _increaseSizePerSecond;
+    [SerializeField] private float _gravityModifier;
     float x;
     float y;
     float z;
     Rigidbody2D rb;
     float lifeTime;
-    [SerializeField] private float _gravityScale;
-    public AnimationCurve Easing;
+    public AnimationCurve GravityCurve;
 
     void Start()
     {
@@ -36,7 +36,6 @@ public class BubbleControllerScript : MonoBehaviour
             //}
             SetParameters();
 
-            //Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Destroy(Instantiate(BubblePrefab, (Vector2)BubbleJoint.position, Quaternion.identity), lifeTime);
             SetDefaultParameters();
             
@@ -62,9 +61,9 @@ public class BubbleControllerScript : MonoBehaviour
 
     public void SetParameters()
     {
-        Easing.Evaluate(x);
+        //Easing.Evaluate(x);
         //rb.gravityScale = -_gravityScale * x;
-        rb.gravityScale = -Easing.Evaluate(x) * 2;
+        rb.gravityScale = -GravityCurve.Evaluate(x) * _gravityModifier;
         lifeTime = 10;
     }
 }

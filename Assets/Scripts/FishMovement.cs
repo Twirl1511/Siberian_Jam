@@ -6,8 +6,11 @@ public class FishMovement : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _rotateSpeed;
+    [SerializeField] private LayerMask _planeMask;
+    [SerializeField] private GameObject _movementPlane;
+    [SerializeField] private AnimationCurve _movementCurve;
     private Camera _camera;
-    private Vector2 mouseWorldPos;
+    private Vector3 movePosition;
     private Rigidbody2D rigi;
 
     void Start()
@@ -18,25 +21,40 @@ public class FishMovement : MonoBehaviour
 
     void Update()
     {
-        mouseWorldPos = _camera.ScreenToWorldPoint(Input.mousePosition);
+        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+
+        //Vector3 mouseWorldPos = _camera.ScreenToWorldPoint(Input.mousePosition);
+        Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, _planeMask);
+
+        if(hit.collider != null && hit.collider.gameObject == _movementPlane)
+        {
+            movePosition = hit.point;
+        }
     }
 
-    private void FixedUpdate() {
+    private void FixedUpdate() 
+    {
         MoveToMouse();
         RotateToMouse();
     }
 
     private void MoveToMouse()
     {
-        Vector2 newPosition = transform.position;
-        newPosition.x = mouseWorldPos.x;
-        rigi.MovePosition(Vector2.Lerp(transform.position, newPosition, Time.deltaTime * _speed));
+        Vector3 newPosition = transform.position;
+        newPosition.x = movePosition.x;
+        float distance = transform.position.x - movePosition.x;
+        float eval = _movementCurve.Evaluate(-Mathf.Abs(distance));
+        rigi.MovePosition(Vector3.Lerp(transform.position, newPosition, Time.deltaTime * _speed * eval));
     }
 
     private void RotateToMouse()
     {
-        mouseWorldPos.y = transform.position.y;
-        Quaternion newRotation = Quaternion.LookRotation(((Vector3)mouseWorldPos - transform.position).normalized);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, Time.deltaTime * _rotateSpeed);
+        movePosition.y = transform.position.y;
+        float distance = Mathf.Abs(transform.position.x - movePosition.x);
+        if(distance > 0f)
+        {
+            Quaternion newRotation = Quaternion.LookRotation(((Vector3)movePosition - transform.position).normalized);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, Time.deltaTime * _rotateSpeed);
+        }
     }
 }
