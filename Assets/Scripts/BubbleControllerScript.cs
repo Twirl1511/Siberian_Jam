@@ -70,7 +70,7 @@ public class BubbleControllerScript : MonoBehaviour
         z = _defaultSize;
         lifeTime = _defaultLifeTime;
         //_bubbleRigi.drag = _defaultDrag;
-        _bubbleRigi.gravityScale = -3.40f;
+        //_bubbleRigi.gravityScale = -3.40f;
     }
 
     public void SetParameters()
