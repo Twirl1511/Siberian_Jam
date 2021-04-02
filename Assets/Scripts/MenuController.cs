@@ -10,10 +10,11 @@ public class MenuController : MonoBehaviour
     [SerializeField] private GameObject _resumeButton;
     [SerializeField] private AudioListener _audioListener;
     private bool _audioSwitch = true;
-    public static bool IsPaused = true;
+    public static bool IsPaused = false;
 
     void Start()
     {
+        IsPaused = true;
         Time.timeScale = 0;
         _mainMenuPanel.SetActive(true);
         _pausePanel.SetActive(false);
