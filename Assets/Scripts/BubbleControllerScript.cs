@@ -32,36 +32,12 @@ public class BubbleControllerScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonUp(0))
+        if (!MenuController.IsPaused)
         {
-            SetParameters();
-            if (_flag)
-            {
-                Spawn();
-                _time = 0;
-            }
-            
-            SetDefaultParameters();
-            _flag = true;
+            CreateBubble();
+            IncreaseBubbleSize();
         }
-
-        if (Input.GetMouseButton(0) && _flag)
-        {
-            _time += Time.deltaTime;
-            x += _increaseSizePerSecond * Time.deltaTime;
-            y += _increaseSizePerSecond * Time.deltaTime;
-            z += _increaseSizePerSecond * Time.deltaTime;
-            BubblePrefab.transform.localScale = new Vector3(x,y,z);
-
-            if(_time >= _timeToCreateBubble)
-            {
-                Spawn();
-                SetDefaultParameters();
-                _flag = false;
-                _time = 0;
-            }
-        }
-
+        
     }
     public void SetDefaultParameters()
     {
@@ -83,5 +59,41 @@ public class BubbleControllerScript : MonoBehaviour
     {
         GameObject bubble = Instantiate(BubblePrefab, (Vector2)BubbleJoint.position, Quaternion.identity);
         Destroy(bubble, lifeTime);
+    }
+
+    private void CreateBubble()
+    {
+        if (Input.GetMouseButtonUp(0))
+        {
+            SetParameters();
+            if (_flag)
+            {
+                Spawn();
+                _time = 0;
+            }
+
+            SetDefaultParameters();
+            _flag = true;
+        }
+    }
+
+    private void IncreaseBubbleSize()
+    {
+        if (Input.GetMouseButton(0) && _flag)
+        {
+            _time += Time.deltaTime;
+            x += _increaseSizePerSecond * Time.deltaTime;
+            y += _increaseSizePerSecond * Time.deltaTime;
+            z += _increaseSizePerSecond * Time.deltaTime;
+            BubblePrefab.transform.localScale = new Vector3(x, y, z);
+
+            if (_time >= _timeToCreateBubble)
+            {
+                Spawn();
+                SetDefaultParameters();
+                _flag = false;
+                _time = 0;
+            }
+        }
     }
 }

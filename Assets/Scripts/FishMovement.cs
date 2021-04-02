@@ -34,8 +34,11 @@ public class FishMovement : MonoBehaviour
 
     private void FixedUpdate() 
     {
-        MoveToMouse();
-        RotateToMouse();
+        if (!MenuController.IsPaused)
+        {
+            MoveToMouse();
+            RotateToMouse();
+        } 
     }
 
     private void MoveToMouse()
