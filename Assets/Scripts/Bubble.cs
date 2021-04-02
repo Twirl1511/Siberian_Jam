@@ -5,7 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Bubble : MonoBehaviour
 {
-    [SerializeField] private float _pushForce;
+    [SerializeField] private float _bubbleExplodeTime;
+
+    [SerializeField] private float _pushForce = 0.2f;
     // Gravity Scale editable on the inspector
     // providing a gravity scale per object
 
@@ -32,9 +34,9 @@ public class Bubble : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.TryGetComponent(out Bubble bubble))
+        if(collision.gameObject.TryGetComponent(out Block block))
         {
-            //Destroy(bubble.gameObject, 0.3f);
+            Destroy(gameObject, _bubbleExplodeTime);
         }
         if(collision.gameObject.TryGetComponent(out Rigidbody rb))
         {
