@@ -1,5 +1,6 @@
 using UnityEngine.Playables;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerCutsceneController : MonoBehaviour
 {
@@ -12,11 +13,13 @@ public class PlayerCutsceneController : MonoBehaviour
     private Rigidbody2D _rigi;
     private bool _enabled = false;
     private bool _moveCloseToTop = false;
-    private bool _jumpOnBlock = false;
     private Vector3 _topPosition;
+    Sequence sequence;
 
     private void Start() {
         _rigi = GetComponent<Rigidbody2D>();
+        DOTween.Init();
+        sequence = DOTween.Sequence();
     }
 
     public void TurnOn()
@@ -34,7 +37,6 @@ public class PlayerCutsceneController : MonoBehaviour
     {
         if(_enabled) MoveOnWay();
         if(_moveCloseToTop) MoveCloseToTop();
-        if(_jumpOnBlock) JumpOnBlock();
     }
 
     private void MoveOnWay()
@@ -48,6 +50,7 @@ public class PlayerCutsceneController : MonoBehaviour
             _currentWaypoint++;
             if(_currentWaypoint >= _waypoints.Length)
             {
+                _currentWaypoint--;
                 _enabled = false;
                 _moveCloseToTop = true;
             }
@@ -63,21 +66,22 @@ public class PlayerCutsceneController : MonoBehaviour
         if((transform.position - _topPosition).magnitude <= 3f)
         {
             _moveCloseToTop = false;
-            _jumpOnBlock = true;
+            JumpOnBlock();
         }
     }
 
     private void JumpOnBlock()
     {
-        Vector3 direction = (_topPosition - transform.position).normalized;
-        transform.position += direction * _speed * Time.deltaTime;
-        transform.rotation = Quaternion.LookRotation(direction);
+        sequence
+            .Append(transform.DOJump(_topPosition + Vector3.up * 0.5f, 1f, 1, 1f)
+            .Append(transform.DOJump(transform.position + Vector3.up * 4f + Vector3.right * 3f, 1f, 1, 1f)
+            .OnComplete(EnableEndVideo)));
+    }
 
-        if((transform.position - _topPosition).magnitude <= 3f)
-        {
-            _moveCloseToTop = false;
-            _jumpOnBlock = true;
-        }
+    private void EnableEndVideo()
+    {
+        sequence.Kill();
+        Destroy(gameObject);
     }
 
     private void FindTopPos()

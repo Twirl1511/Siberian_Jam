@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class WaterUp : MonoBehaviour
 {
@@ -12,25 +13,40 @@ public class WaterUp : MonoBehaviour
     public delegate void Action();
     public event Action ChangeLevel;
 
-    private void Awake()
-    {
-        singeton = this;
+    private void Awake()
+    {
+        singeton = this;
     }
     public void Up()
     {
-        _currentLevelIndex++;
-        if(_currentLevelIndex >= Levels.Length)
+        if(!_inMove)
         {
-            _endSceneController.TurnOn();
-            enabled = false;
+            _currentLevelIndex++;
+            if(_currentLevelIndex >= Levels.Length)
+            {
+                _endSceneController.TurnOn();
+                enabled = false;
+            }
+            else
+            {
+                _inMove = true;
+                _currentLevel = Levels[_currentLevelIndex];
+                _startPosition = transform.position.y;
+                transform.DOMoveY(_currentLevel.transform.position.y, _speed).OnComplete(ResetMove);
+            }
         }
         else
         {
             _currentLevel = Levels[_currentLevelIndex];
             ChangeLevel?.Invoke();
-        }
+        }
+
+        
+    }
 
-        
+    private void ResetMove()
+    {
+        _inMove = false;
     }
 
     private void Update()
@@ -38,15 +54,6 @@ public class WaterUp : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.G))
         {
             Up();
-        }
-
-        if(_currentLevel != null)
-        {
-            transform.Translate(Vector3.up * Time.deltaTime * _speed);
-            if(transform.position.y >= _currentLevel.position.y)
-            {
-                _currentLevel = null;
-            }
         }
     }
 }
