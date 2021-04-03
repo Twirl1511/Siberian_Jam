@@ -29,6 +29,7 @@ public class MenuController : MonoBehaviour
             Time.timeScale = 1;
             StartCoroutine(DelayPauseOff());
             PlayerPrefs.DeleteAll();
+            WaterIteraction._objectsOutOfWater.Clear();
         }
     }
     private void Update()
@@ -49,7 +50,8 @@ public class MenuController : MonoBehaviour
         _mainMenuPanel.SetActive(false);
         Time.timeScale = 1;
         StartCoroutine(DelayPauseOff());
-        
+        WaterIteraction._objectsOutOfWater.Clear();
+
     }
     
 

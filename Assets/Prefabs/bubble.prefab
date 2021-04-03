@@ -127,5 +127,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _touchLifetimeCoeff: 0.5
-  _pushForce: 25
-  gravityScale: -1.8213181
+  _pushForce: 10
+  gravityScale: -1.8605273

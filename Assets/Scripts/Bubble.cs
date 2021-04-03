@@ -45,7 +45,7 @@ public class Bubble : MonoBehaviour
             Vector3 direction = (block.Rigi.transform.position - transform.position).normalized;
             direction *= _pushForce;
             direction.x *= 10;
-            block.Rigi.AddForce(direction, ForceMode.Force);
+            block.Rigi.AddForce(direction, ForceMode.Acceleration);
         }
 
         if(collision.gameObject.TryGetComponent(out Bubble bubble))
