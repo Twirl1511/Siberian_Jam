@@ -72,21 +72,37 @@ public class Block : MonoBehaviour
         }
     }
 
-    public void RayCastToFloor()
-    {
-        Physics.Raycast(transform.position, Vector3.down, out _raycastHit, Mathf.Infinity, _layerMask);
-        if(_raycastHit.distance > RayCastLength)
-        {
-            RayCastLength = _raycastHit.distance;
-        }
-        //print(RayCastLength);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.TryGetComponent(out SandParticleSystem sand))
-        {
-            RayCastLength = 0;
-        }
+    public void RayCastToFloor()
+
+    {
+
+        Physics.Raycast(transform.position, Vector3.down, out _raycastHit, Mathf.Infinity, _layerMask);
+
+        if(_raycastHit.distance > RayCastLength)
+
+        {
+
+            RayCastLength = _raycastHit.distance;
+
+        }
+
+        //print(RayCastLength);
+
+    }
+
+
+
+    private void OnCollisionEnter(Collision collision)
+
+    {
+
+        if(collision.gameObject.TryGetComponent(out SandParticleSystem sand))
+
+        {
+
+            RayCastLength = 0;
+
+        }
+
     }
 }
