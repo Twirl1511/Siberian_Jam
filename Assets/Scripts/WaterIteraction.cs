@@ -5,6 +5,7 @@ using UnityEngine;
 public class WaterIteraction : MonoBehaviour
 {
     [SerializeField] private WaterUp Water;
+    [SerializeField] private float _velocityExt;
     [SerializeField] private float _outOfWaterGravity;
     private List<Rigidbody> _objectsOutOfWater = new List<Rigidbody>();
 
@@ -18,7 +19,7 @@ public class WaterIteraction : MonoBehaviour
         foreach(Rigidbody r in _objectsOutOfWater)
         {
             Block b = r.GetComponent<Block>();
-            if(r.velocity.magnitude <= 0f && b.IsActive)
+            if(r.velocity.magnitude <= _velocityExt && b.IsActive)
             {
                 Water.Up();
             }
