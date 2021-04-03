@@ -13,12 +13,18 @@ public class Bubble : MonoBehaviour
 
     public static float globalGravity = -9.81f;
 
+    public System.Action<Bubble> OnDestroyEvent;
+
     Rigidbody m_rb;
 
     void OnEnable()
     {
         m_rb = GetComponent<Rigidbody>();
         m_rb.useGravity = false;
+    }
+
+    private void OnDestroy() {
+        OnDestroyEvent?.Invoke(this);
     }
 
     void FixedUpdate()

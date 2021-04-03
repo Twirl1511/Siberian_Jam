@@ -13,8 +13,15 @@ public class WaterUp : MonoBehaviour
     public void Up()
     {
         _currentLevelIndex++;
-        _currentLevel = Levels[_currentLevelIndex];
-        _startPosition = transform.position.y;
+        if(_currentLevelIndex > Levels.Length)
+        {
+            //StartFinalScene();
+        }
+        else
+        {
+            _currentLevel = Levels[_currentLevelIndex];
+            _startPosition = transform.position.y;
+        }
     }
 
     private void Update()

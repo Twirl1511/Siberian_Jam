@@ -6,7 +6,7 @@ public class WaterIteraction : MonoBehaviour
 {
     [SerializeField] private WaterUp Water;
     [SerializeField] private float _velocityExt;
-    [SerializeField] private float _outOfWaterGravity;
+    //[SerializeField] private float _outOfWaterGravity;
     private List<Rigidbody> _objectsOutOfWater = new List<Rigidbody>();
 
     private void Start() 
@@ -19,7 +19,7 @@ public class WaterIteraction : MonoBehaviour
         foreach(Rigidbody r in _objectsOutOfWater)
         {
             Block b = r.GetComponent<Block>();
-            if(r.velocity.magnitude <= _velocityExt && b.IsActive)
+            if(r.velocity.magnitude <= _velocityExt && b.IsActive && BubbleControllerScript.Bubbles.Count == 0)
             {
                 Water.Up();
             }
@@ -30,7 +30,8 @@ public class WaterIteraction : MonoBehaviour
     {
         if (collision.TryGetComponent(out Block block))
         {
-            block.Rigi.mass *= _outOfWaterGravity;
+            block.OutOfWater();
+            //block.Rigi.mass *= _outOfWaterGravity;
             _objectsOutOfWater.Add(block.Rigi);
         }
         if (collision.TryGetComponent(out Bubble bubble))
@@ -43,7 +44,8 @@ public class WaterIteraction : MonoBehaviour
     {
         if (collision.TryGetComponent(out Block block))
         {
-            block.Rigi.mass /= _outOfWaterGravity;
+            block.InWater();
+            //block.Rigi.mass /= _outOfWaterGravity;
 
             if (_objectsOutOfWater.Contains(block.Rigi))
                 _objectsOutOfWater.Remove(block.Rigi);

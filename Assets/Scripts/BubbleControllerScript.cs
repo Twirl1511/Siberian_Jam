@@ -5,7 +5,7 @@ using UnityEngine;
 public class BubbleControllerScript : MonoBehaviour
 {
     [SerializeField] private Transform BubbleJoint;
-    [SerializeField] private GameObject BubblePrefab;
+    [SerializeField] private Bubble BubblePrefab;
     [SerializeField] private float _defaultSize;
     [SerializeField] private float _defaultLifeTime;
     [SerializeField] private float _defaultDrag;
@@ -19,9 +19,10 @@ public class BubbleControllerScript : MonoBehaviour
     private float lifeTime;
     public AnimationCurve GravityCurve;
 
-    [Range(1, 5),SerializeField] private float _timeToCreateBubble;
+    [SerializeField] private float _timeToCreateBubble;
     private float _time;
     private bool _flag;
+    [HideInInspector] public static List<Bubble> Bubbles = new List<Bubble>();
 
     void Start()
     {
@@ -57,8 +58,17 @@ public class BubbleControllerScript : MonoBehaviour
 
     private void Spawn()
     {
-        GameObject bubble = Instantiate(BubblePrefab, (Vector2)BubbleJoint.position, Quaternion.identity);
+        Bubble bubble = Instantiate(BubblePrefab, (Vector2)BubbleJoint.position, Quaternion.identity);
+        bubble.OnDestroyEvent += OnBubbleHlopHlop;
+        Bubbles.Add(bubble);
+
         Destroy(bubble, lifeTime);
+    }
+
+    private void OnBubbleHlopHlop(Bubble bubble)
+    {
+        bubble.OnDestroyEvent -= OnBubbleHlopHlop;
+        Bubbles.Remove(bubble);
     }
 
     private void CreateBubble()
