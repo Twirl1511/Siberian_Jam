@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1773185805619134465}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.65, y: 0.89, z: -2.1807613}
-  m_LocalScale: {x: 0.20033872, y: 0.20033872, z: 0.20033872}
+  m_LocalScale: {x: 0.27517596, y: 0.27517596, z: 0.27517596}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -127,5 +127,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _touchLifetimeCoeff: 0.5
-  _pushForce: 25
-  gravityScale: -2.0033872
+  _pushForce: 40
+  gravityScale: -2.7517595
