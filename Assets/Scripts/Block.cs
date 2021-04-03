@@ -56,7 +56,6 @@ public class Block : MonoBehaviour
         while(_elapsedCoroutineTime < _massChangeDuration)
         {
             yield return new WaitForFixedUpdate();
-            print(_elapsedCoroutineTime / _massChangeDuration);
             Rigi.mass = Mathf.Lerp(_currentMass, _outwaterMass, _elapsedCoroutineTime / _massChangeDuration);
         }
     }

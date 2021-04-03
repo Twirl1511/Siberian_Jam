@@ -13,7 +13,7 @@ public class WaterUp : MonoBehaviour
     public void Up()
     {
         _currentLevelIndex++;
-        if(_currentLevelIndex > Levels.Length)
+        if(_currentLevelIndex >= Levels.Length)
         {
             //StartFinalScene();
         }
