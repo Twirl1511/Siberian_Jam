@@ -20,7 +20,6 @@ public class WaterIteraction : MonoBehaviour
             Block b = r.GetComponent<Block>();
             if(r.velocity.magnitude <= 0f && b.IsActive)
             {
-                print("Victory");
                 Water.Up();
             }
         }
@@ -30,10 +29,8 @@ public class WaterIteraction : MonoBehaviour
     {
         if (collision.TryGetComponent(out Block block))
         {
-            Rigidbody rigi = collision.GetComponent<Rigidbody>();
-
-            rigi.mass *= _outOfWaterGravity;
-            _objectsOutOfWater.Add(rigi);
+            block.Rigi.mass *= _outOfWaterGravity;
+            _objectsOutOfWater.Add(block.Rigi);
         }
         if (collision.TryGetComponent(out Bubble bubble))
         {
@@ -45,12 +42,10 @@ public class WaterIteraction : MonoBehaviour
     {
         if (collision.TryGetComponent(out Block block))
         {
-            Rigidbody rigi = block.GetComponent<Rigidbody>();
+            block.Rigi.mass /= _outOfWaterGravity;
 
-            rigi.mass /= _outOfWaterGravity;
-
-            if (_objectsOutOfWater.Contains(rigi))
-                _objectsOutOfWater.Remove(rigi);
+            if (_objectsOutOfWater.Contains(block.Rigi))
+                _objectsOutOfWater.Remove(block.Rigi);
                 
             if(!block.IsActive)
                 block.IsActive = true;

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1773185805619134470}
   - component: {fileID: 3323802600378060361}
-  - component: {fileID: 628116287261897184}
   - component: {fileID: 788672424}
   - component: {fileID: 788672425}
+  - component: {fileID: 628116287261897184}
   m_Layer: 0
   m_Name: bubble
   m_TagString: Bubble
@@ -29,11 +29,7 @@ Transform:
   m_GameObject: {fileID: 1773185805619134465}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.65, y: 0.89, z: -2.1807613}
-<<<<<<< refs/remotes/origin/main
-  m_LocalScale: {x: 0.16758205, y: 0.16758205, z: 0.16758205}
-=======
-  m_LocalScale: {x: 0.21354657, y: 0.21354657, z: 0.21354657}
->>>>>>> !F шрифты, панели
+  m_LocalScale: {x: 0.21957657, y: 0.21957657, z: 0.21957657}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -54,25 +50,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!114 &628116287261897184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1773185805619134465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca964b484e6540c448ee5db99d6869cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bubbleExplodeTime: 1
-  _pushForce: 10
-<<<<<<< refs/remotes/origin/main
-  gravityScale: -1.6758205
-=======
-  gravityScale: -2.4531982
->>>>>>> !F шрифты, панели
 --- !u!135 &788672424
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -80,7 +57,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1773185805619134465}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: d1184ab57dd011549956d62e54a7503a, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -137,3 +114,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &628116287261897184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773185805619134465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca964b484e6540c448ee5db99d6869cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchLifetimeCoeff: 0.5
+  _pushForce: 10
+  gravityScale: -2.1957657

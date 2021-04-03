@@ -5,16 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Bubble : MonoBehaviour
 {
-    [SerializeField] private float _bubbleExplodeTime;
+    [SerializeField] private float _touchLifetimeCoeff = 0.1f;
 
     [SerializeField] private float _pushForce = 0.2f;
-    // Gravity Scale editable on the inspector
-    // providing a gravity scale per object
 
     public float gravityScale = 1.0f;
-
-    // Global Gravity doesn't appear in the inspector. Modify it here in the code
-    // (or via scripting) to define a different default gravity for all objects.
 
     public static float globalGravity = -9.81f;
 
@@ -36,15 +31,20 @@ public class Bubble : MonoBehaviour
     {
         if(collision.gameObject.TryGetComponent(out Block block))
         {
-            Destroy(gameObject, _bubbleExplodeTime);
-        }
-        if(collision.gameObject.TryGetComponent(out Rigidbody rb))
-        {
-            Vector3 direction = (rb.transform.position - transform.position).normalized;
+            //Destroy bubble after touch any decoration
+            float scale = transform.localScale.x;
+            Destroy(gameObject, _touchLifetimeCoeff / scale);
+
+            //Push touched object
+            Vector3 direction = (block.Rigi.transform.position - transform.position).normalized;
             direction *= _pushForce;
             direction.x *= 10;
-            rb.AddForce(direction, ForceMode.Force);
+            block.Rigi.AddForce(direction, ForceMode.Force);
         }
-        
+
+        if(collision.gameObject.TryGetComponent(out Bubble bubble))
+        {
+            Destroy(gameObject);
+        }
     }
 }
