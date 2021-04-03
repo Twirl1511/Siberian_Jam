@@ -12,11 +12,14 @@ public class WaterUp : MonoBehaviour
     public static int _currentLevelIndex = -1;
     public delegate void Action();
     public event Action ChangeLevel;
+    private bool _inMove;
 
-    private void Awake()
-    {
-        singeton = this;
+    private void Awake()
+
+    {
+        singeton = this;
     }
+
     public void Up()
     {
         if(!_inMove)
@@ -31,7 +34,6 @@ public class WaterUp : MonoBehaviour
             {
                 _inMove = true;
                 _currentLevel = Levels[_currentLevelIndex];
-                _startPosition = transform.position.y;
                 transform.DOMoveY(_currentLevel.transform.position.y, _speed).OnComplete(ResetMove);
             }
         }
@@ -39,9 +41,7 @@ public class WaterUp : MonoBehaviour
         {
             _currentLevel = Levels[_currentLevelIndex];
             ChangeLevel?.Invoke();
-        }
-
-        
+        }
     }
 
     private void ResetMove()
