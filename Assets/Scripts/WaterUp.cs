@@ -3,6 +3,7 @@ using UnityEngine;
 public class WaterUp : MonoBehaviour
 {
 
+    [SerializeField] private PlayerCutsceneController _endSceneController;
     [SerializeField] private float _speed;
     public Transform[] Levels;
     private Transform _currentLevel;
@@ -15,7 +16,8 @@ public class WaterUp : MonoBehaviour
         _currentLevelIndex++;
         if(_currentLevelIndex >= Levels.Length)
         {
-            //StartFinalScene();
+            _endSceneController.TurnOn();
+            enabled = false;
         }
         else
         {
