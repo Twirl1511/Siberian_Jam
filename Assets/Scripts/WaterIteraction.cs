@@ -7,7 +7,7 @@ public class WaterIteraction : MonoBehaviour
     [SerializeField] private WaterUp Water;
     [SerializeField] private float _velocityExt;
     //[SerializeField] private float _outOfWaterGravity;
-    private List<Rigidbody> _objectsOutOfWater = new List<Rigidbody>();
+    public static List<Rigidbody> _objectsOutOfWater = new List<Rigidbody>();
 
     private void Start() 
     {
@@ -22,6 +22,7 @@ public class WaterIteraction : MonoBehaviour
             if(r.velocity.magnitude <= _velocityExt && b.IsActive && BubbleControllerScript.Bubbles.Count == 0)
             {
                 Water.Up();
+                break;
             }
         }
     }

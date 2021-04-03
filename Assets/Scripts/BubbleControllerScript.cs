@@ -15,7 +15,7 @@ public class BubbleControllerScript : MonoBehaviour
     private float x;
     private float y;
     private float z;
-    private Bubble _bubbleRigi;
+    private Bubble _bubbleScript;
     private float lifeTime;
     public AnimationCurve GravityCurve;
 
@@ -27,7 +27,7 @@ public class BubbleControllerScript : MonoBehaviour
     void Start()
     {
         _flag = true;
-        _bubbleRigi = BubblePrefab.GetComponent<Bubble>();
+        _bubbleScript = BubblePrefab.GetComponent<Bubble>();
         SetDefaultParameters();
     }
 
@@ -50,15 +50,22 @@ public class BubbleControllerScript : MonoBehaviour
         //_bubbleRigi.gravityScale = -3.40f;
     }
 
-    public void SetParameters()
+    //public void SetParameters()
+    //{
+    //    _bubbleScript.gravityScale = -GravityCurve.Evaluate(x) * _gravityModifier;
+    //    lifeTime = 10;
+    //}
+    public void SetParameters(Bubble bubble)
     {
-        _bubbleRigi.gravityScale = -GravityCurve.Evaluate(x) * _gravityModifier;
+        bubble.gravityScale = -GravityCurve.Evaluate(x) * _gravityModifier;
         lifeTime = 10;
     }
 
     private void Spawn()
     {
         Bubble bubble = Instantiate(BubblePrefab, (Vector2)BubbleJoint.position, Quaternion.identity);
+        bubble.transform.localScale = new Vector3(x,y,z);
+        SetParameters(bubble);
         bubble.OnDestroyEvent += OnBubbleHlopHlop;
         Bubbles.Add(bubble);
 
@@ -75,7 +82,7 @@ public class BubbleControllerScript : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
-            SetParameters();
+            //SetParameters();
             if (_flag)
             {
                 Spawn();
@@ -95,7 +102,7 @@ public class BubbleControllerScript : MonoBehaviour
             x += _increaseSizePerSecond * Time.deltaTime;
             y += _increaseSizePerSecond * Time.deltaTime;
             z += _increaseSizePerSecond * Time.deltaTime;
-            BubblePrefab.transform.localScale = new Vector3(x, y, z);
+            //BubblePrefab.transform.localScale = new Vector3(x, y, z);
 
             if (_time >= _timeToCreateBubble)
             {

@@ -19,7 +19,7 @@ public class Block : MonoBehaviour
     private float _outwaterMass = 0f;
     private float _currentMass = 0f;
 
-    private void Start() {
+    private void Awake() {
         Rigi = GetComponent<Rigidbody>();
         InvokeRepeating(nameof(RayCastToFloor), 1, 1);
         _underwaterMass = Rigi.mass;
@@ -79,7 +79,7 @@ public class Block : MonoBehaviour
         {
             RayCastLength = _raycastHit.distance;
         }
-        print(RayCastLength);
+        //print(RayCastLength);
     }
 
     private void OnCollisionEnter(Collision collision)

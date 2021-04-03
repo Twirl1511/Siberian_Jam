@@ -2,15 +2,20 @@ using UnityEngine;
 
 public class WaterUp : MonoBehaviour
 {
+    public static WaterUp singeton;
 
     [SerializeField] private PlayerCutsceneController _endSceneController;
     [SerializeField] private float _speed;
     public Transform[] Levels;
     private Transform _currentLevel;
-    private int _currentLevelIndex = -1;
-    private float _startPosition;
-    private float _testPos;
+    public static int _currentLevelIndex = -1;
+    public delegate void Action();
+    public event Action ChangeLevel;
 
+    private void Awake()
+    {
+        singeton = this;
+    }
     public void Up()
     {
         _currentLevelIndex++;
@@ -22,8 +27,10 @@ public class WaterUp : MonoBehaviour
         else
         {
             _currentLevel = Levels[_currentLevelIndex];
-            _startPosition = transform.position.y;
+            ChangeLevel?.Invoke();
         }
+
+        
     }
 
     private void Update()
