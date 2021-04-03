@@ -29,7 +29,7 @@ public class PlayerCutsceneController : MonoBehaviour
     {
         if(_enabled)
         {
-            transform.position = Vector3.Lerp
+            //transform.position = Vector3.Lerp
             //_rigi.MovePosition(Vector3.Lerp(transform.position, _startPosition.position, Time.deltaTime * _speed));
             if((transform.position - _startPosition.position).magnitude <= 0.1f)
             {
