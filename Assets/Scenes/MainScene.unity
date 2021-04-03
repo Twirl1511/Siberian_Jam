@@ -499,7 +499,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &89088806
 Transform:
   m_ObjectHideFlags: 0
@@ -4737,7 +4737,7 @@ MonoBehaviour:
   _defaultSize: 0.16
   _defaultLifeTime: 10
   _defaultDrag: 4
-  _increaseSizePerSecond: 0.6
+  _increaseSizePerSecond: 0.5
   _gravityModifier: 10
   _additionalVelocity: 0
   GravityCurve:
@@ -4764,7 +4764,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _timeToCreateBubble: 1.23
+  _timeToCreateBubble: 1.18
 --- !u!1 &1942078340
 GameObject:
   m_ObjectHideFlags: 0
@@ -4813,7 +4813,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1956375072
 MonoBehaviour:
   m_ObjectHideFlags: 0
