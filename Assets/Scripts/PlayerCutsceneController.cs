@@ -6,15 +6,16 @@ public class PlayerCutsceneController : MonoBehaviour
 {
     [SerializeField] private MonoBehaviour[] _disableScripts;
     [SerializeField] private Transform[] _waypoints;
-    [SerializeField] private float _speed;
+    [SerializeField] private float[] _speed;
     [SerializeField] private Transform _anyBlockPos;
+    [SerializeField] private CameraFollow _cameraFollow;
     private int _currentWaypoint = 0;
     private Vector3 _basePosition;
     private Rigidbody2D _rigi;
     private bool _enabled = false;
     private bool _moveCloseToTop = false;
     private Vector3 _topPosition;
-    Sequence sequence;
+    private Sequence sequence;
 
     private void Start() {
         _rigi = GetComponent<Rigidbody2D>();
@@ -24,6 +25,7 @@ public class PlayerCutsceneController : MonoBehaviour
 
     public void TurnOn()
     {
+        _cameraFollow.Enable();
         _enabled = true;
         _basePosition = transform.position;
         FindTopPos();
@@ -41,7 +43,7 @@ public class PlayerCutsceneController : MonoBehaviour
 
     private void MoveOnWay()
     {
-        transform.position += (_waypoints[_currentWaypoint].position -_basePosition).normalized * _speed * Time.deltaTime;
+        transform.position += (_waypoints[_currentWaypoint].position -_basePosition).normalized * _speed[_currentWaypoint] * Time.deltaTime;
         Vector3 direction = (_waypoints[_currentWaypoint].position - transform.position).normalized;
         transform.rotation = Quaternion.LookRotation(direction);
         if((transform.position - _waypoints[_currentWaypoint].position).magnitude <= 0.2f)
@@ -60,10 +62,10 @@ public class PlayerCutsceneController : MonoBehaviour
     private void MoveCloseToTop()
     {
         Vector3 direction = (_topPosition - transform.position).normalized;
-        transform.position += direction * _speed * Time.deltaTime;
+        transform.position += direction * _speed[_currentWaypoint] * Time.deltaTime;
         transform.rotation = Quaternion.LookRotation(direction);
 
-        if((transform.position - _topPosition).magnitude <= 3f)
+        if((transform.position - _topPosition).magnitude <= 4f)
         {
             _moveCloseToTop = false;
             JumpOnBlock();

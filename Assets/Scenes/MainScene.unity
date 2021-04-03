@@ -1284,6 +1284,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1299,6 +1300,25 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b50a5f17059f6342b230a0527250b49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 9133644059218337258}
+  maxY: -3.37
+  minY: -7.27
+  maxX: 4.3
+  minX: -3.51
+  _camera: {fileID: 0}
+  target_Offset: {x: 0, y: 0, z: 0}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -4472,7 +4492,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1679681292}
-  - component: {fileID: 1679681291}
   m_Layer: 0
   m_Name: VictoryAnimation
   m_TagString: Untagged
@@ -4480,26 +4499,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!320 &1679681291
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1679681290}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 4fe01103227bf114290a496ab4f7e297, type: 2}
-  m_InitialState: 0
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: -6642255057055446380, guid: 4fe01103227bf114290a496ab4f7e297, type: 2}
-    value: {fileID: 8740222010027378222}
-  m_ExposedReferences:
-    m_References:
-    - 294ab79083bb6eb42aa4b63f4c9909d5: {fileID: 8469837469521577808}
 --- !u!4 &1679681292
 Transform:
   m_ObjectHideFlags: 0
@@ -6836,8 +6835,15 @@ MonoBehaviour:
   - {fileID: 2106407540}
   - {fileID: 583132406}
   - {fileID: 345707784}
-  _speed: 15
+  - {fileID: 1730522182}
+  _speed:
+  - 3
+  - 4
+  - 5
+  - 5
+  - 5
   _anyBlockPos: {fileID: 1418411632}
+  _cameraFollow: {fileID: 519420030}
 --- !u!114 &8469837469521577810
 MonoBehaviour:
   m_ObjectHideFlags: 0
