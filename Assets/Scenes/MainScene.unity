@@ -917,6 +917,7 @@ GameObject:
   - component: {fileID: 260194064}
   - component: {fileID: 260194063}
   - component: {fileID: 260194061}
+  - component: {fileID: 260194060}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -924,6 +925,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &260194060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260194059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ca1b28a842653c4a895ed5e02446fad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sandPartSystem: {fileID: 7090762774684497666, guid: f0d58f4a338063c4aaee407c4927cc99,
+    type: 3}
 --- !u!65 &260194061
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5240,21 +5255,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 751962140}
     m_Modifications:
-    - target: {fileID: 8291246740913510472, guid: 973c7f4fc1cd98f42bafd3db7f473786,
-        type: 3}
-      propertyPath: m_Drag
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8291246740913510472, guid: 973c7f4fc1cd98f42bafd3db7f473786,
-        type: 3}
-      propertyPath: m_Mass
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8291246740913510472, guid: 973c7f4fc1cd98f42bafd3db7f473786,
-        type: 3}
-      propertyPath: m_AngularDrag
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 400799205788664428, guid: 9426b44b2c547bd48bccb0337df70583,
         type: 3}
       propertyPath: m_IsActive
@@ -5284,6 +5284,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291246740913510472, guid: 973c7f4fc1cd98f42bafd3db7f473786,
+        type: 3}
+      propertyPath: m_Drag
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291246740913510472, guid: 973c7f4fc1cd98f42bafd3db7f473786,
+        type: 3}
+      propertyPath: m_Mass
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291246740913510472, guid: 973c7f4fc1cd98f42bafd3db7f473786,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9426b44b2c547bd48bccb0337df70583, type: 3}
