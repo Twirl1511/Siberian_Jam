@@ -65,6 +65,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 1
   Rigi: {fileID: 0}
+  RayCastLength: 0
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!65 &400799205788664426
 BoxCollider:
   m_ObjectHideFlags: 0
