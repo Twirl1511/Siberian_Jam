@@ -342,9 +342,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelObjects:
   - {fileID: 8702834490872605003, guid: ba35b27ce5b19924bae5e72c2068f6b4, type: 3}
-  - {fileID: 2866684744554218085, guid: 45c40b3f174bc3e4583a2df503229c03, type: 3}
-  - {fileID: 269262596646192804, guid: c7ab9e9a3f9bf1b4498c76cda8b9fd82, type: 3}
-  - {fileID: 8294852552602452731, guid: f69d411b2bb075f458aae9763f236917, type: 3}
+  - {fileID: 4294959948341433532, guid: 45c40b3f174bc3e4583a2df503229c03, type: 3}
+  - {fileID: 3236968590666819724, guid: c7ab9e9a3f9bf1b4498c76cda8b9fd82, type: 3}
+  - {fileID: 3185671781842552536, guid: f69d411b2bb075f458aae9763f236917, type: 3}
   _frames:
   - {fileID: 2130382647}
   - {fileID: 615555852}
@@ -5711,7 +5711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Water: {fileID: 2080100889}
-  _velocityExt: 0.03
+  _velocityExt: 0.02
 --- !u!65 &2080100888
 BoxCollider:
   m_ObjectHideFlags: 0
