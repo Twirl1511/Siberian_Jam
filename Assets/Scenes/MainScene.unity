@@ -6943,7 +6943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Water: {fileID: 2080100889}
-  _velocityExt: 0.01
+  _velocityExt: 0.04
 --- !u!65 &2080100888
 BoxCollider:
   m_ObjectHideFlags: 0
