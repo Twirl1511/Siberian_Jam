@@ -15,6 +15,7 @@ public class PlayerCutsceneController : MonoBehaviour
     private bool _enabled = false;
     private bool _moveCloseToTop = false;
     private Vector3 _topPosition;
+    private Vector3 _startPosition;
 
     private Sequence sequence;
 
@@ -22,6 +23,7 @@ public class PlayerCutsceneController : MonoBehaviour
         _rigi = GetComponent<Rigidbody2D>();
         DOTween.Init();
         sequence = DOTween.Sequence();
+        _startPosition = transform.position;
     }
 
     public void TurnOn()
@@ -111,5 +113,16 @@ public class PlayerCutsceneController : MonoBehaviour
         }
         _topPosition = hit.point;
         _topPosition.z = transform.position.z;
+    }
+
+    public void Reset()
+    {
+        gameObject.SetActive(true);
+        transform.position = _startPosition;
+        _enabled = false;
+        foreach(var script in _disableScripts)
+        {
+            script.enabled = true;
+        }
     }
 }

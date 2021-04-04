@@ -1353,6 +1353,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1381,10 +1382,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 9133644059218337258}
-  maxY: -4.02
-  minY: -7.52
-  maxX: 4.32
-  minX: -4.41
+  maxY: -3.04
+  minY: -3.71
+  maxX: 0.68
+  minX: -0.72
   _camera: {fileID: 0}
   target_Offset: {x: 0, y: 0, z: 0}
 --- !u!20 &519420031
@@ -1438,12 +1439,108 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0.01745243, y: 0.001500795, z: 0.00002619654, w: 0.99984664}
-  m_LocalPosition: {x: -0.093509234, y: -3.8, z: -16.2}
+  m_LocalPosition: {x: 0, y: -3.8, z: -16.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -2, y: 0.172, z: 0}
+--- !u!82 &519420033
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 64c34ea6be88d5948810d40ea378b042, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.598
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &540679128
 GameObject:
   m_ObjectHideFlags: 0
@@ -2703,7 +2800,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce0ea610e4445b4195bccb24f399127, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _camFollow: {fileID: 519420030}
   _wu: {fileID: 2080100889}
+  _player: {fileID: 8469837469521577809}
   _level: {fileID: 89088808}
   _deadFishImage: {fileID: 708484961}
   _fadePanel: {fileID: 1825304771}
@@ -2711,6 +2810,7 @@ MonoBehaviour:
   _voiceTwo: {fileID: 8300000, guid: 4a962d3b3271ac84dbb23c146b497acc, type: 3}
   _unitazSound: {fileID: 8300000, guid: aa2bb2eb3acfed543a25a30fd9bb63e5, type: 3}
   _aquariumBulk: {fileID: 8300000, guid: ed08c61471db31d4487fa29b5eb09600, type: 3}
+  _backgroundMusic: {fileID: 519420033}
 --- !u!4 &898066560
 Transform:
   m_ObjectHideFlags: 0
@@ -6205,7 +6305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Water: {fileID: 2080100889}
-  _velocityExt: 0.02
+  _velocityExt: 0.01
 --- !u!65 &2080100888
 BoxCollider:
   m_ObjectHideFlags: 0

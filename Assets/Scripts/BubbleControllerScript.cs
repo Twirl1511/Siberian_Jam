@@ -77,8 +77,11 @@ public class BubbleControllerScript : MonoBehaviour
 
     private void OnBubbleHlopHlop(Bubble bubble)
     {
-        bubble.OnDestroyEvent -= OnBubbleHlopHlop;
-        Bubbles.Remove(bubble);
+        if(Bubbles.Contains(bubble))
+        {
+            Bubbles.Remove(bubble);
+            bubble.OnDestroyEvent -= OnBubbleHlopHlop;
+        }
     }
 
     private void CreateBubble()

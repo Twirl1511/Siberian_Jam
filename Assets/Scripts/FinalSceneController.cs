@@ -11,7 +11,9 @@ using UnityEngine;
 
 public class FinalSceneController : MonoBehaviour
 {
+    [SerializeField] private CameraFollow _camFollow;
     [SerializeField] private WaterUp _wu;
+    [SerializeField] private PlayerCutsceneController _player;
     [SerializeField] private LevelChange _level;
     [SerializeField] private GameObject _deadFishImage;
     [SerializeField] private FadePanel _fadePanel;
@@ -19,10 +21,12 @@ public class FinalSceneController : MonoBehaviour
     [SerializeField] private AudioClip _voiceTwo;
     [SerializeField] private AudioClip _unitazSound;
     [SerializeField] private AudioClip _aquariumBulk;
+    [SerializeField] private AudioSource _backgroundMusic;
 
     public void EnableScene()
     {
         _fadePanel.TurnOn(ChangeImage);
+        _backgroundMusic.mute = true;
     }
 
     private void ChangeImage()
@@ -34,7 +38,7 @@ public class FinalSceneController : MonoBehaviour
     private void VoiceOne()
     {
         SoundManager.singleton.PlaySoud(_voiceOne);
-        Invoke(nameof(FadeAgain), 2f);
+        Invoke(nameof(FadeAgain), 4.2f);
     }
 
     private void FadeAgain()
@@ -57,7 +61,7 @@ public class FinalSceneController : MonoBehaviour
     private void AquariumBulk()
     {
         SoundManager.singleton.PlaySoud(_aquariumBulk);
-        Invoke(nameof(Restart), 3f);
+        Invoke(nameof(Restart), 1.75f);
     }
 
     private void Restart()
@@ -65,9 +69,12 @@ public class FinalSceneController : MonoBehaviour
         _deadFishImage.SetActive(false);
 
         WaterUp._currentLevelIndex = -1;
+        _wu.enabled = true;
         _wu.ResetPosition();
         _level.OnRestart();
-
+        _camFollow.Reset();
+        _player.Reset();
+        _backgroundMusic.mute = false;
         _fadePanel.TurnOff(null);
     }
 
