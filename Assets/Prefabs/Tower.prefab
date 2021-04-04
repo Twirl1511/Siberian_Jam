@@ -101,7 +101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2579517793479411135
 Transform:
   m_ObjectHideFlags: 0
@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 2920471558391832325}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.64, y: -2.5074, z: 4.2525}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1.920765, y: 1.920765, z: 1.920765}
   m_Children:
   - {fileID: 2916286884751735303}
   m_Father: {fileID: 0}
@@ -125,9 +125,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2920471558391832325}
   serializedVersion: 2
-  m_Mass: 5
-  m_Drag: 8
-  m_AngularDrag: 4
+  m_Mass: 3
+  m_Drag: 4
+  m_AngularDrag: 10
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -147,6 +147,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 1
   Rigi: {fileID: 0}
+  _outOfWaterGravity: 2.5
+  _massChangeDuration: 0.5
   RayCastLength: 0
   _layerMask:
     serializedVersion: 2

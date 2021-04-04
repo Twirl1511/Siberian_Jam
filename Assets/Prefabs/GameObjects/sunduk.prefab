@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &576479068892811278
 Transform:
   m_ObjectHideFlags: 0
@@ -28,9 +28,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 237494529643350708}
-  m_LocalRotation: {x: -0, y: -0.70710576, z: -0, w: 0.7071079}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2520798, y: 1.2520798, z: 1.2520798}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -92,9 +92,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 237494529643350708}
   serializedVersion: 2
-  m_Mass: 5
-  m_Drag: 6
-  m_AngularDrag: 3
+  m_Mass: 3.3
+  m_Drag: 4
+  m_AngularDrag: 5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -114,8 +114,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 1
   Rigi: {fileID: 0}
-  _outOfWaterGravity: 3
-  _massChangeDuration: 0
+  _outOfWaterGravity: 2.5
+  _massChangeDuration: 0.5
   RayCastLength: 0
   _layerMask:
     serializedVersion: 2
@@ -127,7 +127,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 237494529643350708}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: d1184ab57dd011549956d62e54a7503a, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4

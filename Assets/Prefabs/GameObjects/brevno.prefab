@@ -19,13 +19,14 @@ GameObject:
   - component: {fileID: 4553545261496509795}
   - component: {fileID: 2505409227909808045}
   - component: {fileID: 112338251066221245}
+  - component: {fileID: 987286470}
   m_Layer: 0
   m_Name: brevno
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2502302166687978686
 Transform:
   m_ObjectHideFlags: 0
@@ -35,7 +36,7 @@ Transform:
   m_GameObject: {fileID: 3022520341417217540}
   m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0044775, y: 1.18, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -97,9 +98,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3022520341417217540}
   serializedVersion: 2
-  m_Mass: 5
-  m_Drag: 6
-  m_AngularDrag: 3
+  m_Mass: 3
+  m_Drag: 4
+  m_AngularDrag: 10
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -119,8 +120,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 1
   Rigi: {fileID: 0}
-  _outOfWaterGravity: 3
-  _massChangeDuration: 0
+  _outOfWaterGravity: 2.5
+  _massChangeDuration: 0.5
   RayCastLength: 0
   _layerMask:
     serializedVersion: 2
@@ -132,9 +133,9 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3022520341417217540}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: d1184ab57dd011549956d62e54a7503a, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1.94, y: 2.46, z: 2.08}
   m_Center: {x: 0, y: -1.07, z: 0.3014232}
@@ -147,10 +148,10 @@ BoxCollider:
   m_GameObject: {fileID: 3022520341417217540}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.45, y: 1.95, z: 1.72}
-  m_Center: {x: -0.89, y: -2.93, z: 0.76}
+  m_Size: {x: 0.09, y: 1.95, z: 1.72}
+  m_Center: {x: -1.14, y: -2.93, z: 0.76}
 --- !u!65 &6995684497203164844
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -160,10 +161,10 @@ BoxCollider:
   m_GameObject: {fileID: 3022520341417217540}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.45, y: 1.95, z: 1.72}
-  m_Center: {x: 1.08, y: -2.93, z: 0.76}
+  m_Size: {x: 0.08, y: 1.95, z: 1.72}
+  m_Center: {x: 1.31, y: -2.93, z: 0.76}
 --- !u!65 &4553545261496509795
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -173,10 +174,10 @@ BoxCollider:
   m_GameObject: {fileID: 3022520341417217540}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 2.37, y: 1.02, z: 0.33}
-  m_Center: {x: 0.07, y: -3.41, z: 1.66}
+  m_Size: {x: 2.37, y: 1.02, z: 0.06}
+  m_Center: {x: 0.07, y: -3.41, z: 1.73}
 --- !u!65 &2505409227909808045
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -186,9 +187,9 @@ BoxCollider:
   m_GameObject: {fileID: 3022520341417217540}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 2.37, y: 1.02, z: 0.33}
+  m_Size: {x: 2.37, y: 1.02, z: 0.09}
   m_Center: {x: 0.07, y: -3.41, z: -0.29}
 --- !u!65 &112338251066221245
 BoxCollider:
@@ -197,9 +198,23 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3022520341417217540}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: d1184ab57dd011549956d62e54a7503a, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 2.88, y: 0.47, z: 2.78}
   m_Center: {x: 0.08, y: -0.23, z: -0.05}
+--- !u!64 &987286470
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3022520341417217540}
+  m_Material: {fileID: 13400000, guid: d1184ab57dd011549956d62e54a7503a, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2124705421725058983, guid: 954c004b04b28fa4c90859b7c308c9b3, type: 3}

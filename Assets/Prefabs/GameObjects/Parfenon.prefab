@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 3923667495736837133}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.77, y: -1.43, z: 4.2525}
-  m_LocalScale: {x: 2.3065817, y: 2.3065817, z: 2.3065817}
+  m_LocalScale: {x: 2.573304, y: 2.573304, z: 2.573304}
   m_Children:
   - {fileID: 4357099455018624023}
   m_Father: {fileID: 0}
@@ -45,9 +45,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3923667495736837133}
   serializedVersion: 2
-  m_Mass: 5
-  m_Drag: 6
-  m_AngularDrag: 3
+  m_Mass: 4
+  m_Drag: 4
+  m_AngularDrag: 6
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -67,8 +67,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 1
   Rigi: {fileID: 0}
-  _outOfWaterGravity: 3
-  _massChangeDuration: 0
+  _outOfWaterGravity: 2.5
+  _massChangeDuration: 0.5
   RayCastLength: 0
   _layerMask:
     serializedVersion: 2
@@ -80,12 +80,12 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3923667495736837133}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: d1184ab57dd011549956d62e54a7503a, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.07, y: 0.2, z: 1.24}
-  m_Center: {x: 0, y: -0.05, z: 0}
+  m_Size: {x: 1.77, y: 0.2, z: 1.24}
+  m_Center: {x: 0.04, y: -0.05, z: 0}
 --- !u!65 &3923667495736837128
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -93,7 +93,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3923667495736837133}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: d1184ab57dd011549956d62e54a7503a, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -106,7 +106,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3923667495736837133}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: d1184ab57dd011549956d62e54a7503a, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -119,7 +119,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3923667495736837133}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: d1184ab57dd011549956d62e54a7503a, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
