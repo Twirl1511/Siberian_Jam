@@ -10,6 +10,7 @@ public class Bubble : MonoBehaviour
     public float _pushForce = 0.2f;
     [SerializeField] private float _pushForceXMulpiplayer = 50f;
 
+    [HideInInspector] public float ActivateLevelY;
     public float gravityScale = 1.0f;
 
     public static float globalGravity = -9.81f;
@@ -17,6 +18,7 @@ public class Bubble : MonoBehaviour
     public System.Action<Bubble> OnDestroyEvent;
 
     Rigidbody m_rb;
+    SphereCollider _collider;
 
     public static int counter = 0;
     public int CurrentCounter;
@@ -26,8 +28,10 @@ public class Bubble : MonoBehaviour
     {
         counter++;
         CurrentCounter = counter;
+        _collider = GetComponent<SphereCollider>();
         m_rb = GetComponent<Rigidbody>();
         m_rb.useGravity = false;
+        _collider.enabled = false;
     }
 
     private void OnDestroy() {
@@ -38,6 +42,10 @@ public class Bubble : MonoBehaviour
     {
         Vector3 gravity = globalGravity * gravityScale * Vector3.up;
         m_rb.AddForce(gravity, ForceMode.Acceleration);
+        if(!_collider.enabled && transform.position.y >= ActivateLevelY + 2f)
+        {
+            _collider.enabled = true;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

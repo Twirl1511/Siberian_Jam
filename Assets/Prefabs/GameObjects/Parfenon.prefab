@@ -11,9 +11,6 @@ GameObject:
   - component: {fileID: 4411410388257889975}
   - component: {fileID: 7918558907859223360}
   - component: {fileID: 7918558907859223363}
-  - component: {fileID: 3923667495736837130}
-  - component: {fileID: 3923667495736837128}
-  - component: {fileID: 3923667495736837131}
   - component: {fileID: 3700657877469671744}
   m_Layer: 0
   m_Name: Parfenon
@@ -73,45 +70,6 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 128
---- !u!65 &3923667495736837130
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3923667495736837133}
-  m_Material: {fileID: 13400000, guid: d1184ab57dd011549956d62e54a7503a, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.77, y: 0.2, z: 1.24}
-  m_Center: {x: 0.04, y: -0.05, z: 0}
---- !u!65 &3923667495736837128
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3923667495736837133}
-  m_Material: {fileID: 13400000, guid: d1184ab57dd011549956d62e54a7503a, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.24, y: 1.12, z: 1}
-  m_Center: {x: -0.79, y: 0.6, z: 0}
---- !u!65 &3923667495736837131
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3923667495736837133}
-  m_Material: {fileID: 13400000, guid: d1184ab57dd011549956d62e54a7503a, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.24, y: 1.12, z: 1}
-  m_Center: {x: 0.84, y: 0.6, z: 0}
 --- !u!65 &3700657877469671744
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -123,8 +81,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.7, y: 1.12, z: 1.1}
-  m_Center: {x: 0, y: 0.6, z: -0.04}
+  m_Size: {x: 1.76, y: 1.12, z: 1.1}
+  m_Center: {x: 0.02, y: 0.6, z: -0.04}
 --- !u!1 &3980151218480529069
 GameObject:
   m_ObjectHideFlags: 0

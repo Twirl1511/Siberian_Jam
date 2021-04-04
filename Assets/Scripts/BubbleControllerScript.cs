@@ -65,6 +65,7 @@ public class BubbleControllerScript : MonoBehaviour
         Bubble bubble = Instantiate(BubblePrefab, (Vector2)BubbleJoint.position, Quaternion.identity);
         bubble.transform.localScale = new Vector3(x,y,z);
         SetParameters(bubble);
+        bubble.ActivateLevelY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
         bubble.OnDestroyEvent += OnBubbleHlopHlop;
         Bubbles.Add(bubble);
 
