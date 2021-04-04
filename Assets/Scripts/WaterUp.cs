@@ -73,11 +73,6 @@ public class WaterUp : MonoBehaviour
         {
             Up();
         }
-
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            Up();
-        }
     }
 
     
