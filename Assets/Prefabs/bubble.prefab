@@ -128,8 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _touchLifetimeCoeff: 0.45
-  _pushForce: 20
-  _pushForceXMulpiplayer: 30
+  _pushForce: 15
+  _pushForceXMulpiplayer: 20
   ActivateLevelY: 0
   gravityScale: -1.8605273
   CurrentCounter: 0
