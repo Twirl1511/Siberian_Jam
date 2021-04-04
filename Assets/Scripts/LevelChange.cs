@@ -21,12 +21,13 @@ public class LevelChange : MonoBehaviour
 
 
     [SerializeField] private GameObject _blackScreen;
-    private SpriteRenderer _blackScreenSpriteRenderer;
+    [SerializeField] private FadePanel _fadePanel;
+
+    [SerializeField] private GameObject[] _clouds;
 
     void Start()
     {
         _waveRb = _waveGameObject.GetComponent<Rigidbody>();
-        _blackScreenSpriteRenderer = _blackScreen.GetComponent<SpriteRenderer>();
         _waveEndPosition = _waveEndPositionGameObject.transform.position;
         _waveStartPosition = _waveGameObject.transform.position;
         WaterUp.singeton.ChangeLevel += NextLevelAnimation;
@@ -62,6 +63,7 @@ public class LevelChange : MonoBehaviour
     public void OnRestart()
     {
         WaterIteraction._objectsOutOfWater.Clear();
+        //Destroy(_levelObjects[WaterUp._currentLevelIndex]); 
         Destroy(_currentLevelObjects);
         _currentLevelObjects = Instantiate(_levelObjects[WaterUp._currentLevelIndex + 1]);
     }
@@ -83,56 +85,38 @@ public class LevelChange : MonoBehaviour
             yield return new WaitForSeconds(seconds);
             _frames[i].SetActive(true);
         }
+        DestroyTower();
+        yield return new WaitForSeconds(0.5f);
+        //льется вода звук
         SoundManager.singleton.PlaySoud(SoundManager.singleton.WaterUp);
         // поднимаем воду
         WaterUp.singeton.WaterUpPush();
         // разрушаем башню
-        DestroyTower();
-        yield return new WaitForSeconds(3);
         
+        
+        yield return new WaitForSeconds(2);
+        
+        
+        
+        /// спавним объекты нового лвла
+        _fadePanel.TurnOn(null);
+        /// девочка садится на место
+        yield return new WaitForSeconds(1);
         for (int i = 0; i < _frames.Length; i++)
         {
             _frames[i].SetActive(false);
         }
-        // возвращаем игроку движение
+        _fadePanel.TurnOff(null);
+        /// спавним новые объекты на левле
+        OnRestart();
         MenuController.IsPaused = false;
-        /// затемнение
-        /// затемнение прошло
-        /// cпавнятся объекты
+
         /// текст над рыбкой
         /// MenuController.IsPaused = false;
     }
 
     private void DestroyTower()
     {
-
-        //_invisibleForceGameObject.transform.Translate(_invisibleForceEndPosition.transform.position,);
-
         _isWaveActive = true;
-
-
-
-
-
-
-
-
-
-        //Vector3 direction;
-        //if (_levelObjects[counter].transform.GetChild(0).transform.position.x >= 0)
-        //{
-        //    direction = Vector3.left;
-        //}
-        //else
-        //{
-        //    direction = Vector3.right;
-        //}
-
-        //print(_levelObjects[counter].transform.childCount);
-        //for (int i = 0; i < _levelObjects[counter].transform.childCount; i++)
-        //{
-        //    //_levelObjects[counter].transform.GetChild(i).GetComponent<Rigidbody>().AddForce(Vector3.up * 1000);
-        //    //testRosck.GetComponent<Rigidbody>().AddForce(Vector3.left * 1000);
-        //}
     }
 }
