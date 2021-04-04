@@ -60,7 +60,11 @@ public class LevelChange : MonoBehaviour
         Destroy(_currentLevelObjects);
         _currentLevelObjects = Instantiate(_levelObjects[WaterUp._currentLevelIndex + 1]);
         //StartCoroutine(FirstCloud(1));
-        ShowCloud();
+        if(WaterUp._currentLevelIndex + 1 < 3)
+        {
+            ShowCloud();
+        }
+        
     }
 
     public void NextLevelAnimation()
@@ -75,10 +79,11 @@ public class LevelChange : MonoBehaviour
     }
     IEnumerator FirstCloud(float sec)
     {
+        int cloudNumber = WaterUp._currentLevelIndex + 1;
         yield return new WaitForSeconds(sec);
-        _clouds[WaterUp._currentLevelIndex + 1].SetActive(true);
+        _clouds[cloudNumber].SetActive(true);
         yield return new WaitForSeconds(4);
-        _clouds[WaterUp._currentLevelIndex + 1].SetActive(false);
+        _clouds[cloudNumber].SetActive(false);
         MenuController.IsPaused = false;
     }
 

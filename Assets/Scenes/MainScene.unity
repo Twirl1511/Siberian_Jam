@@ -328,7 +328,6 @@ MonoBehaviour:
   _pauseButton: {fileID: 1510173138}
   _resumeButton: {fileID: 127465686}
   _audioListener: {fileID: 519420029}
-  levelChange: {fileID: 89088808}
 --- !u!114 &89088808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1234,7 +1233,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &408242918
 RectTransform:
   m_ObjectHideFlags: 0
