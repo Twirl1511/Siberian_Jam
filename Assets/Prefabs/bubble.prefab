@@ -126,7 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca964b484e6540c448ee5db99d6869cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _touchLifetimeCoeff: 1
-  _pushForce: 10
+  _touchLifetimeCoeff: 0.6
+  _pushForce: 12
   _pushForceXMulpiplayer: 20
   gravityScale: -1.8605273
+  CurrentCounter: 0
