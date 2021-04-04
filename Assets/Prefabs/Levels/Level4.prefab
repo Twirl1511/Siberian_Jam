@@ -347,6 +347,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bashenka
       objectReference: {fileID: 0}
+    - target: {fileID: 2054887637006260762, guid: 96e7dac0a0a2125479a967a8ae9502c1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96e7dac0a0a2125479a967a8ae9502c1, type: 3}
 --- !u!4 &5455974425195951552 stripped
