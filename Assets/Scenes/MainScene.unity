@@ -1229,7 +1229,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &408242918
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2703,7 +2703,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce0ea610e4445b4195bccb24f399127, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _menuController: {fileID: 89088807}
+  _wu: {fileID: 2080100889}
+  _level: {fileID: 89088808}
   _deadFishImage: {fileID: 708484961}
   _fadePanel: {fileID: 1825304771}
   _voiceOne: {fileID: 8300000, guid: f5c4a6d2474311745891162b5a652192, type: 3}
@@ -5759,7 +5760,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1956375072
 MonoBehaviour:
   m_ObjectHideFlags: 0

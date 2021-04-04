@@ -11,7 +11,8 @@ using UnityEngine;
 
 public class FinalSceneController : MonoBehaviour
 {
-    [SerializeField] private MenuController _menuController;
+    [SerializeField] private WaterUp _wu;
+    [SerializeField] private LevelChange _level;
     [SerializeField] private GameObject _deadFishImage;
     [SerializeField] private FadePanel _fadePanel;
     [SerializeField] private AudioClip _voiceOne;
@@ -62,11 +63,13 @@ public class FinalSceneController : MonoBehaviour
     private void Restart()
     {
         _deadFishImage.SetActive(false);
-        _menuController.OnStartGame();
+
+        WaterUp._currentLevelIndex = -1;
+        _wu.ResetPosition();
+        _level.OnRestart();
+
         _fadePanel.TurnOff(null);
     }
-
-
 
     private void Update() {
         if(Input.GetKeyDown(KeyCode.H))
