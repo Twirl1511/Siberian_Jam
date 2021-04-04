@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class LevelChange : MonoBehaviour
 {
@@ -8,14 +9,52 @@ public class LevelChange : MonoBehaviour
     private GameObject _currentLevelObjects;
     [SerializeField] private GameObject[] _frames;
     [SerializeField] private float _timeBtwFrames;
+    [SerializeField] private float _forceDestroyTower;
+
+    [SerializeField] private GameObject _waveGameObject;
+    private Vector3 _waveStartPosition;
+    [SerializeField] private GameObject _waveEndPositionGameObject;
+    [SerializeField] private float _waveSpeed;
+    private Vector3 _waveEndPosition;
+    private bool _isWaveActive = false;
+
+
+    [SerializeField] private GameObject _blackScreen;
+    private SpriteRenderer _blackScreenSpriteRenderer;
 
     void Start()
     {
-        WaterUp.singeton.ChangeLevel += OnRestart;
+        _blackScreenSpriteRenderer = _blackScreen.GetComponent<SpriteRenderer>();
+        _waveEndPosition = _waveEndPositionGameObject.transform.position;
+        _waveStartPosition = _waveGameObject.transform.position;
+        WaterUp.singeton.ChangeLevel += NextLevelAnimation;
         _currentLevelObjects = Instantiate(_levelObjects[0]);
     }
 
-    
+    private void FixedUpdate()
+    {
+        ActivateWave();
+    }
+
+    private void ActivateWave()
+    {
+        if (_isWaveActive)
+        {
+            if (_waveGameObject.transform.position == _waveEndPosition)
+            {
+                _isWaveActive = false;
+                _waveGameObject.transform.position = _waveStartPosition;
+            }
+            _waveGameObject.transform.position = Vector3.MoveTowards(_waveGameObject.transform.position, _waveEndPosition, _waveSpeed * Time.deltaTime);
+        }
+    }
+
+    private void BackScreening()
+    {
+        //_blackScreenSpriteRenderer.
+    }
+
+
     public void OnRestart()
     {
         WaterIteraction._objectsOutOfWater.Clear();
@@ -29,25 +68,67 @@ public class LevelChange : MonoBehaviour
         StartCoroutine(SceneSwitcher(_timeBtwFrames));
     }
 
-
+    
 
 
     IEnumerator SceneSwitcher(float seconds)
     {
-        for(int i = 0; i < _frames.Length; i++)
+        // последовательность кадров как девочка встает и наливает воду
+        for (int i = 0; i < _frames.Length; i++)
         {
             yield return new WaitForSeconds(seconds);
             _frames[i].SetActive(true);
         }
         SoundManager.singleton.PlaySoud(SoundManager.singleton.WaterUp);
-        // повышается уровень воды
-        /// разрушается башня - отдельный скрипт с течением
-        /// // исчезает рука с кувшином
-        /// отключаются все сцены
+        // поднимаем воду
+        WaterUp.singeton.WaterUpPush();
+        // разрушаем башню
+        DestroyTower();
+        yield return new WaitForSeconds(3);
+        
+        for (int i = 0; i < _frames.Length; i++)
+        {
+            _frames[i].SetActive(false);
+        }
+        // возвращаем игроку движение
+        MenuController.IsPaused = false;
         /// затемнение
         /// затемнение прошло
         /// cпавнятся объекты
         /// текст над рыбкой
         /// MenuController.IsPaused = false;
+    }
+
+    private void DestroyTower()
+    {
+
+        //_invisibleForceGameObject.transform.Translate(_invisibleForceEndPosition.transform.position,);
+
+        _isWaveActive = true;
+
+
+
+
+
+
+
+
+
+        //Vector3 direction;
+        //if (_levelObjects[counter].transform.GetChild(0).transform.position.x >= 0)
+        //{
+        //    direction = Vector3.left;
+        //}
+        //else
+        //{
+        //    direction = Vector3.right;
+        //}
+
+        //print(_levelObjects[counter].transform.childCount);
+        //for (int i = 0; i < _levelObjects[counter].transform.childCount; i++)
+        //{
+        //    //_levelObjects[counter].transform.GetChild(i).GetComponent<Rigidbody>().AddForce(Vector3.up * 1000);
+        //    //testRosck.GetComponent<Rigidbody>().AddForce(Vector3.left * 1000);
+        //}
     }
 }

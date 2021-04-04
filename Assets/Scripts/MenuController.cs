@@ -15,7 +15,7 @@ public class MenuController : MonoBehaviour
 
     void Start()
     {
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         IsPaused = true;
         _pauseButton.SetActive(false);
         _mainMenuPanel.SetActive(true);
@@ -92,7 +92,7 @@ public class MenuController : MonoBehaviour
         {
             _pausePanel.SetActive(true);
             _pauseButton.SetActive(false);
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
             IsPaused = true;
         }
     }

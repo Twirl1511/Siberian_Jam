@@ -38,9 +38,53 @@ public class FishMovement : MonoBehaviour
         {
             MoveToMouse();
             RotateToMouse();
-        } 
+        }
+        else
+        {
+            
+            MoveWhilePause();
+
+        }
     }
 
+
+    // механика плавания пока идут катсцены
+    private bool _flagIdleMove = true;
+    private float _timeForIDLE;
+    /// <summary>
+    /// IDLE во время паузы
+    /// </summary>
+    /// <param name="leftPoint"></param>
+    /// <param name="rightPoint"></param>
+    private void MoveWhilePause()
+    {
+        Vector3 leftPoint = new Vector3(-3, transform.position.y, transform.position.z);
+        Vector3 rightPoint = new Vector3(3, transform.position.y, transform.position.z);
+        Vector3 endPosition;
+        if (_flagIdleMove)
+        {
+            endPosition = leftPoint;
+        }
+        else
+        {
+            endPosition = rightPoint;
+        }
+        float distance = transform.position.x - endPosition.x;
+        float eval = _movementCurve.Evaluate(-Mathf.Abs(distance));
+        rigi.MovePosition(Vector3.Lerp(transform.position, endPosition, Time.deltaTime * _speed * eval));
+
+
+
+        Quaternion newRotation = Quaternion.LookRotation(((Vector3)endPosition - transform.position).normalized);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, Time.deltaTime * _rotateSpeed);
+        _timeForIDLE += Time.deltaTime;
+        if (_timeForIDLE >= 2f)
+        {
+            _timeForIDLE = 0;
+            _flagIdleMove = !_flagIdleMove;
+        }
+        
+    }
     private void MoveToMouse()
     {
         Vector3 newPosition = transform.position;

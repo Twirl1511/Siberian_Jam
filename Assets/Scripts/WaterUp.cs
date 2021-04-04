@@ -1,5 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
+using System.Collections;
 
 public class WaterUp : MonoBehaviour
 {
@@ -15,7 +16,6 @@ public class WaterUp : MonoBehaviour
     private bool _inMove;
 
     private void Awake()
-
     {
         singeton = this;
     }
@@ -36,15 +36,31 @@ public class WaterUp : MonoBehaviour
             {
                 _inMove = true;
                 _currentLevel = Levels[_currentLevelIndex];
-                transform.DOMoveY(_currentLevel.transform.position.y, _speed).OnComplete(ResetMove);
+                ChangeLevel?.Invoke();
+                //transform.DOMoveY(_currentLevel.transform.position.y, _speed).OnComplete(ResetMove);
+                /// сделал костыль через куротину, пока не придумал как иначе
+                /// чтобы вода поднималась после смены картинок
+                //StartCoroutine(DelayWaterUp(4));
             }
         }
         else
         {
             _currentLevel = Levels[_currentLevelIndex];
-            ChangeLevel?.Invoke();
+            //ChangeLevel?.Invoke();
         }
     }
+
+    /// сделал костыль через куротину, пока не придумал как иначе
+    //IEnumerator DelayWaterUp(float seconds)
+    //{
+    //    yield return new WaitForSeconds(seconds);
+    //    transform.DOMoveY(_currentLevel.transform.position.y, _speed).OnComplete(ResetMove);
+    //}
+    public void WaterUpPush()
+    {
+        transform.DOMoveY(_currentLevel.transform.position.y, _speed).OnComplete(ResetMove);
+    }
+    
 
     private void ResetMove()
     {
@@ -63,4 +79,6 @@ public class WaterUp : MonoBehaviour
             Up();
         }
     }
+
+    
 }
