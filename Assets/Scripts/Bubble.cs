@@ -18,7 +18,7 @@ public class Bubble : MonoBehaviour
     public System.Action<Bubble> OnDestroyEvent;
 
     Rigidbody m_rb;
-    SphereCollider _collider;
+    Collider _collider;
 
     public static int counter = 0;
     public int CurrentCounter;
@@ -28,7 +28,7 @@ public class Bubble : MonoBehaviour
     {
         counter++;
         CurrentCounter = counter;
-        _collider = GetComponent<SphereCollider>();
+        _collider = GetComponent<Collider>();
         m_rb = GetComponent<Rigidbody>();
         m_rb.useGravity = false;
         //_collider.enabled = false;
