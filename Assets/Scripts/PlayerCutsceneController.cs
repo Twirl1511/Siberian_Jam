@@ -82,7 +82,7 @@ public class PlayerCutsceneController : MonoBehaviour
     {
         sequence
             .Append(transform.DOJump(_topPosition + Vector3.up * 0.5f, 1f, 1, 1f)
-            .Append(transform.DOJump(transform.position + Vector3.up * 4f + Vector3.right * 3f, 1f, 1, 1f)
+            .Append(transform.DOJump(transform.position + Vector3.up * 4.5f + Vector3.right * 3.2f, 1f, 1, 1f)
             .OnComplete(EnableEndVideo)));
     }
 

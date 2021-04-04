@@ -31,7 +31,24 @@ public class Bubble : MonoBehaviour
         _collider = GetComponent<SphereCollider>();
         m_rb = GetComponent<Rigidbody>();
         m_rb.useGravity = false;
-        _collider.enabled = false;
+        //_collider.enabled = false;
+    }
+
+    private void Start() {
+
+        //Baaaadly!!!!!!!!
+        Block[] allBlocks = FindObjectsOfType<Block>();
+        foreach(Block block in allBlocks)
+        {
+            if(block.transform.position.y < ActivateLevelY)
+            {
+                Collider[] colliders = block.GetComponents<Collider>();
+                foreach(var collider in colliders)
+                {
+                    Physics.IgnoreCollision(_collider, collider, true);
+                }
+            }
+        }
     }
 
     private void OnDestroy() {
@@ -42,10 +59,10 @@ public class Bubble : MonoBehaviour
     {
         Vector3 gravity = globalGravity * gravityScale * Vector3.up;
         m_rb.AddForce(gravity, ForceMode.Acceleration);
-        if(!_collider.enabled && transform.position.y >= ActivateLevelY + 2f)
-        {
-            _collider.enabled = true;
-        }
+        //if(!_collider.enabled && transform.position.y >= ActivateLevelY + 2f)
+        //{
+        //    _collider.enabled = true;
+        //}
     }
 
     private void OnCollisionEnter(Collision collision)
