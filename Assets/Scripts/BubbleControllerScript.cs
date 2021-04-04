@@ -12,6 +12,7 @@ public class BubbleControllerScript : MonoBehaviour
     [SerializeField] private float _increaseSizePerSecond;
     [SerializeField] private float _gravityModifier;
     [SerializeField] private float _additionalVelocity;
+    [SerializeField] private float _bubbleZCoord = -3.5f;
     private float x;
     private float y;
     private float z;
@@ -62,7 +63,9 @@ public class BubbleControllerScript : MonoBehaviour
 
     private void Spawn()
     {
-        Bubble bubble = Instantiate(BubblePrefab, (Vector2)BubbleJoint.position, Quaternion.identity);
+        Vector3 newPos = (Vector2)BubbleJoint.position;
+        newPos.z = _bubbleZCoord;
+        Bubble bubble = Instantiate(BubblePrefab, newPos, Quaternion.identity);
         bubble.transform.localScale = new Vector3(x,y,z);
         SetParameters(bubble);
         bubble.ActivateLevelY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;

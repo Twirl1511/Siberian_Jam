@@ -637,12 +637,12 @@ PrefabInstance:
     - target: {fileID: 2502302166687978686, guid: 4b3ac8844ebb116448a19d2601e3d279,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.12
+      value: 13.29
       objectReference: {fileID: 0}
     - target: {fileID: 2502302166687978686, guid: 4b3ac8844ebb116448a19d2601e3d279,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.39
+      value: -0.4
       objectReference: {fileID: 0}
     - target: {fileID: 2502302166687978686, guid: 4b3ac8844ebb116448a19d2601e3d279,
         type: 3}
@@ -1327,13 +1327,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: -0.06445563, y: 0.001496966, z: 0.000096667034, w: 0.99791944}
-  m_LocalPosition: {x: -0.093509234, y: -4.8517246, z: -16.2}
+  m_LocalRotation: {x: -0.024781184, y: 0.0015005626, z: 0.000037197184, w: 0.9996918}
+  m_LocalPosition: {x: -0.093509234, y: -3.94, z: -16.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -2.84, y: 0.172, z: 0}
 --- !u!1 &540679128
 GameObject:
   m_ObjectHideFlags: 0
@@ -2088,7 +2088,7 @@ Transform:
   - {fileID: 5826572971819313205}
   - {fileID: 728620757}
   - {fileID: 809675365}
-  - {fileID: 972623364}
+  - {fileID: 2502302166766791317}
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2694,12 +2694,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.13651705, y: 1}
   m_EdgeRadius: 0
---- !u!4 &972623364 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2502302166687978686, guid: 4b3ac8844ebb116448a19d2601e3d279,
-    type: 3}
-  m_PrefabInstance: {fileID: 217300523}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1054688886
 GameObject:
   m_ObjectHideFlags: 0
@@ -5091,13 +5085,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1821094891}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.173677, y: 3.503304, z: -16.48}
+  m_LocalRotation: {x: 0, y: 0, z: -0.014747552, w: 0.9998913}
+  m_LocalPosition: {x: -9.03, y: 2.86, z: -21.8}
   m_LocalScale: {x: 1.682, y: 1.682, z: 1.682}
   m_Children: []
   m_Father: {fileID: 1646268251}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1.69}
 --- !u!212 &1821094893
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5825,14 +5819,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2080100886}
-  m_LocalRotation: {x: -0.0791551, y: 0, z: 0, w: 0.9968623}
+  m_LocalRotation: {x: -0.033068, y: 0, z: 0, w: 0.9994531}
   m_LocalPosition: {x: -0.27400994, y: -4.4, z: -4.2}
   m_LocalScale: {x: 2.02, y: 1.9700003, z: 0.37900853}
   m_Children:
   - {fileID: 911954276}
   m_Father: {fileID: 0}
   m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: -9.08, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -3.79, y: 0, z: 0}
 --- !u!1 &2106407539
 GameObject:
   m_ObjectHideFlags: 0
@@ -6250,6 +6244,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &2502302166766791317 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2502302166687978686, guid: 4b3ac8844ebb116448a19d2601e3d279,
+    type: 3}
+  m_PrefabInstance: {fileID: 217300523}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3137145513257008284
 GameObject:
   m_ObjectHideFlags: 0
@@ -6589,6 +6589,7 @@ MonoBehaviour:
   _increaseSizePerSecond: 0.3
   _gravityModifier: 10
   _additionalVelocity: 0
+  _bubbleZCoord: -3.5
   GravityCurve:
     serializedVersion: 2
     m_Curve:
@@ -7502,7 +7503,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8469837469521577808}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.14, y: -10.6, z: -2.06}
+  m_LocalPosition: {x: 0.14, y: -10.76, z: -4}
   m_LocalScale: {x: 0.64, y: 0.64, z: 0.64}
   m_Children:
   - {fileID: 4611273976818052592}
