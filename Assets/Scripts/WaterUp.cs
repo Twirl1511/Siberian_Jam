@@ -22,6 +22,8 @@ public class WaterUp : MonoBehaviour
 
     public void Up()
     {
+        if(enabled == false)
+            return;
         if(!_inMove)
         {
             _currentLevelIndex++;
@@ -52,6 +54,11 @@ public class WaterUp : MonoBehaviour
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.G))
+        {
+            Up();
+        }
+
+        if(Input.GetKeyDown(KeyCode.F))
         {
             Up();
         }

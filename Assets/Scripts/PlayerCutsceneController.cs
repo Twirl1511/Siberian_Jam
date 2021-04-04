@@ -15,6 +15,7 @@ public class PlayerCutsceneController : MonoBehaviour
     private bool _enabled = false;
     private bool _moveCloseToTop = false;
     private Vector3 _topPosition;
+
     private Sequence sequence;
 
     private void Start() {
@@ -43,18 +44,22 @@ public class PlayerCutsceneController : MonoBehaviour
 
     private void MoveOnWay()
     {
-        transform.position += (_waypoints[_currentWaypoint].position -_basePosition).normalized * _speed[_currentWaypoint] * Time.deltaTime;
-        Vector3 direction = (_waypoints[_currentWaypoint].position - transform.position).normalized;
-        transform.rotation = Quaternion.LookRotation(direction);
-        if((transform.position - _waypoints[_currentWaypoint].position).magnitude <= 0.2f)
+        if(_enabled)
         {
-            _basePosition = transform.position;
-            _currentWaypoint++;
-            if(_currentWaypoint >= _waypoints.Length)
+            transform.position += (_waypoints[_currentWaypoint].position -_basePosition).normalized * _speed[_currentWaypoint] * Time.deltaTime;
+            Vector3 direction = (_waypoints[_currentWaypoint].position - transform.position).normalized;
+            transform.rotation = Quaternion.LookRotation(direction);
+
+            if((transform.position - _waypoints[_currentWaypoint].position).magnitude <= 0.2f)
             {
-                _currentWaypoint--;
-                _enabled = false;
-                _moveCloseToTop = true;
+                _basePosition = transform.position;
+                _currentWaypoint++;
+                if(_currentWaypoint >= _waypoints.Length)
+                {
+                    _currentWaypoint--;
+                    _enabled = false;
+                    _moveCloseToTop = true;
+                }
             }
         }
     }
@@ -62,7 +67,8 @@ public class PlayerCutsceneController : MonoBehaviour
     private void MoveCloseToTop()
     {
         Vector3 direction = (_topPosition - transform.position).normalized;
-        transform.position += direction * _speed[_currentWaypoint] * Time.deltaTime;
+
+        transform.position += direction * 0.02f;
         transform.rotation = Quaternion.LookRotation(direction);
 
         if((transform.position - _topPosition).magnitude <= 4f)
@@ -103,5 +109,6 @@ public class PlayerCutsceneController : MonoBehaviour
             }
         }
         _topPosition = hit.point;
+        _topPosition.z = transform.position.z;
     }
 }

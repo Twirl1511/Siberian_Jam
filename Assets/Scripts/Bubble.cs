@@ -52,11 +52,9 @@ public class Bubble : MonoBehaviour
     {
         if(collision.gameObject.TryGetComponent(out Block block))
         {
-            //Destroy bubble after touch any decoration
             float scale = transform.localScale.x;
             Destroy(gameObject, _touchLifetimeCoeff / scale);
 
-            //Push touched object
             Vector3 direction = (block.Rigi.transform.position - transform.position).normalized;
             direction *= _pushForce;
             direction.x *= _pushForceXMulpiplayer;
