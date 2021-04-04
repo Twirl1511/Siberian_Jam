@@ -56,7 +56,8 @@ public class BubbleControllerScript : MonoBehaviour
     public void SetParameters(Bubble bubble)
     {
         bubble.gravityScale = -GravityCurve.Evaluate(x) * _gravityModifier;
-        lifeTime = 10;
+        bubble._pushForce *= x*10;
+        lifeTime = 20;
     }
 
     private void Spawn()

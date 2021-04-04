@@ -7,7 +7,7 @@ public class Bubble : MonoBehaviour
 {
     [SerializeField] private float _touchLifetimeCoeff = 0.1f;
 
-    [SerializeField] private float _pushForce = 0.2f;
+    public float _pushForce = 0.2f;
     [SerializeField] private float _pushForceXMulpiplayer = 50f;
 
     public float gravityScale = 1.0f;
@@ -19,11 +19,13 @@ public class Bubble : MonoBehaviour
     Rigidbody m_rb;
 
     public static int counter = 0;
+    public int CurrentCounter;
 
 
     void OnEnable()
     {
         counter++;
+        CurrentCounter = counter;
         m_rb = GetComponent<Rigidbody>();
         m_rb.useGravity = false;
     }
@@ -50,13 +52,16 @@ public class Bubble : MonoBehaviour
             Vector3 direction = (block.Rigi.transform.position - transform.position).normalized;
             direction *= _pushForce;
             direction.x *= _pushForceXMulpiplayer;
-            block.Rigi.AddForce(direction, ForceMode.Acceleration);
+            block.Rigi.AddForce(direction, ForceMode.Force);
         }
 
         if(collision.gameObject.TryGetComponent(out Bubble bubble))
         {
+            if(CurrentCounter > bubble.CurrentCounter)
+            {
+                Destroy(bubble.gameObject);
+            }
             
-            Destroy(gameObject);
         }
     }
 }
