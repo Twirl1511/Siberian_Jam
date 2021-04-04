@@ -18,6 +18,7 @@ public class MenuController : MonoBehaviour
     private bool _audioSwitch = false;
     public static bool IsPaused = false;
     [SerializeField] private GameObject _creditsPanel;
+    [SerializeField] private LevelChange levelChange;  
 
     void Start()
     {
@@ -58,6 +59,7 @@ public class MenuController : MonoBehaviour
         StartCoroutine(DelayPauseOff());
         WaterIteraction._objectsOutOfWater.Clear();
         _player.SetActive(true);
+        levelChange.ShowCloud();
     }
     
 
@@ -117,7 +119,6 @@ public class MenuController : MonoBehaviour
         {
             _pausePanel.SetActive(true);
             _pauseButton.SetActive(false);
-            //Time.timeScale = 0;
             IsPaused = true;
         }
     }

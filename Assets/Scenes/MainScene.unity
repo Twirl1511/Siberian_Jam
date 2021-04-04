@@ -333,6 +333,7 @@ MonoBehaviour:
   _audioOff: {fileID: 21300000, guid: e2294d21dd2ec4e8d90d93a41184e180, type: 3}
   _audioOnn: {fileID: 21300000, guid: 03641bbfd5f11454cbd29274c33cef66, type: 3}
   _creditsPanel: {fileID: 1871913388}
+  levelChange: {fileID: 89088808}
 --- !u!114 &89088808
 MonoBehaviour:
   m_ObjectHideFlags: 0
