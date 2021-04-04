@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
@@ -10,13 +11,17 @@ public class MenuController : MonoBehaviour
     [SerializeField] private GameObject _pausePanel;
     [SerializeField] private GameObject _pauseButton;
     [SerializeField] private GameObject _resumeButton;
-    [SerializeField] private AudioListener _audioListener;
-    private bool _audioSwitch = true;
+    [SerializeField] private AudioSource _audioSourse;
+    [SerializeField] private Image _imageSound;
+    [SerializeField] private Sprite _audioOff;
+    [SerializeField] private Sprite _audioOnn;
+    private bool _audioSwitch = false;
     public static bool IsPaused = false;
+    [SerializeField] private GameObject _creditsPanel;
 
     void Start()
     {
-        //Time.timeScale = 0;
+        _creditsPanel.SetActive(false);
         IsPaused = true;
         _pauseButton.SetActive(false);
         _mainMenuPanel.SetActive(true);
@@ -56,6 +61,11 @@ public class MenuController : MonoBehaviour
     }
     
 
+    public void OnCredits()
+    {
+        _creditsPanel.SetActive(true);
+    }
+
     public void OnExitGame()
     {
         Application.Quit();
@@ -63,7 +73,19 @@ public class MenuController : MonoBehaviour
     public void OnMusicSwitch()
     {
         _audioSwitch = !_audioSwitch;
-        _audioListener.enabled = _audioSwitch;
+        _audioSourse.mute = _audioSwitch;
+
+        if (_audioSwitch)
+        {
+            _imageSound.sprite = _audioOff;
+        }
+        else
+        {
+            _imageSound.sprite = _audioOnn;
+        }
+
+        
+
     }
 
     public void OnBackToMenu()
@@ -72,7 +94,9 @@ public class MenuController : MonoBehaviour
         _pausePanel.SetActive(false);
         _resumeButton.SetActive(true);
         _pausePanel.SetActive(false);
+        _creditsPanel.SetActive(false);
     }
+
     public void OnResume()
     {
         _mainMenuPanel.SetActive(false);

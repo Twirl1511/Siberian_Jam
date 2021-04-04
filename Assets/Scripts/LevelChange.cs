@@ -20,7 +20,7 @@ public class LevelChange : MonoBehaviour
     private bool _isWaveActive = false;
 
 
-    [SerializeField] private GameObject _blackScreen;
+
     [SerializeField] private FadePanel _fadePanel;
 
     [SerializeField] private GameObject[] _clouds;
@@ -63,6 +63,10 @@ public class LevelChange : MonoBehaviour
         if(WaterUp._currentLevelIndex + 1 < 3)
         {
             ShowCloud();
+        }
+        else
+        {
+            MenuController.IsPaused = false;
         }
         
     }
