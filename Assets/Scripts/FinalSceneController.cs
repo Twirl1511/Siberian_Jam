@@ -79,9 +79,9 @@ public class FinalSceneController : MonoBehaviour
     }
 
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.H))
-        {
-            EnableScene();
-        }
+        //if(Input.GetKeyDown(KeyCode.H))
+        //{
+        //    EnableScene();
+        //}
     }
 }

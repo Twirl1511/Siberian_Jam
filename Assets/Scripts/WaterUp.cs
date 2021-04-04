@@ -76,7 +76,7 @@ public class WaterUp : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             Up();
         }
