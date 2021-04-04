@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
+    [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _mainMenuPanel;
     [SerializeField] private GameObject _pausePanel;
     [SerializeField] private GameObject _pauseButton;
@@ -51,7 +52,7 @@ public class MenuController : MonoBehaviour
         Time.timeScale = 1;
         StartCoroutine(DelayPauseOff());
         WaterIteraction._objectsOutOfWater.Clear();
-
+        _player.SetActive(true);
     }
     
 

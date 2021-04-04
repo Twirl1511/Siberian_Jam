@@ -14,10 +14,17 @@ public class WaterUp : MonoBehaviour
     public delegate void Action();
     public event Action ChangeLevel;
     private bool _inMove;
+    private Vector3 _basePos;
 
     private void Awake()
     {
         singeton = this;
+        _basePos = transform.position;
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = _basePos;
     }
 
     public void Up()
@@ -38,8 +45,8 @@ public class WaterUp : MonoBehaviour
                 _currentLevel = Levels[_currentLevelIndex];
                 ChangeLevel?.Invoke();
                 //transform.DOMoveY(_currentLevel.transform.position.y, _speed).OnComplete(ResetMove);
-                /// сделал костыль через куротину, пока не придумал как иначе
-                /// чтобы вода поднималась после смены картинок
+                /// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+                /// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                 //StartCoroutine(DelayWaterUp(4));
             }
         }
@@ -50,7 +57,7 @@ public class WaterUp : MonoBehaviour
         }
     }
 
-    /// сделал костыль через куротину, пока не придумал как иначе
+    /// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
     //IEnumerator DelayWaterUp(float seconds)
     //{
     //    yield return new WaitForSeconds(seconds);

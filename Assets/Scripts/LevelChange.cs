@@ -79,7 +79,7 @@ public class LevelChange : MonoBehaviour
 
     IEnumerator SceneSwitcher(float seconds)
     {
-        // последовательность кадров как девочка встает и наливает воду
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         for (int i = 0; i < _frames.Length; i++)
         {
             yield return new WaitForSeconds(seconds);
@@ -87,31 +87,31 @@ public class LevelChange : MonoBehaviour
         }
         DestroyTower();
         yield return new WaitForSeconds(0.5f);
-        //льется вода звук
+        //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         SoundManager.singleton.PlaySoud(SoundManager.singleton.WaterUp);
-        // поднимаем воду
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         WaterUp.singeton.WaterUpPush();
-        // разрушаем башню
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         
         
         yield return new WaitForSeconds(2);
         
         
         
-        /// спавним объекты нового лвла
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         _fadePanel.TurnOn(null);
-        /// девочка садится на место
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         yield return new WaitForSeconds(1);
         for (int i = 0; i < _frames.Length; i++)
         {
             _frames[i].SetActive(false);
         }
         _fadePanel.TurnOff(null);
-        /// спавним новые объекты на левле
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         OnRestart();
         MenuController.IsPaused = false;
 
-        /// текст над рыбкой
+        /// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         /// MenuController.IsPaused = false;
     }
 
