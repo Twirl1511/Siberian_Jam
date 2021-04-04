@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2186881602449771211}
   - component: {fileID: 5073094086842179975}
   - component: {fileID: 7758547260949501787}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bashenka
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -35,7 +35,7 @@ GameObject:
   - component: {fileID: 959702615488786205}
   - component: {fileID: 1176112987061807205}
   - component: {fileID: 7782964149085919733}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: brevno
   m_TagString: Untagged
   m_Icon: {fileID: 0}

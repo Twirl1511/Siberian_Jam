@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1672305337246551370}
   - component: {fileID: 1102829053}
   - component: {fileID: 1102829054}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Vase
   m_TagString: Block
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 7170057128568210518}
   - component: {fileID: 329363151569726399}
   - component: {fileID: 6611637676410413986}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 5561499152409334430}
   - component: {fileID: 2248231012257523229}
   - component: {fileID: 6376455651322379024}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

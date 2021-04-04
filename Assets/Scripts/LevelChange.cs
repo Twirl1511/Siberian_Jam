@@ -14,6 +14,7 @@ public class LevelChange : MonoBehaviour
     [SerializeField] private GameObject _waveGameObject;
     private Vector3 _waveStartPosition;
     [SerializeField] private GameObject _waveEndPositionGameObject;
+    private Rigidbody _waveRb;
     [SerializeField] private float _waveSpeed;
     private Vector3 _waveEndPosition;
     private bool _isWaveActive = false;
@@ -24,6 +25,7 @@ public class LevelChange : MonoBehaviour
 
     void Start()
     {
+        _waveRb = _waveGameObject.GetComponent<Rigidbody>();
         _blackScreenSpriteRenderer = _blackScreen.GetComponent<SpriteRenderer>();
         _waveEndPosition = _waveEndPositionGameObject.transform.position;
         _waveStartPosition = _waveGameObject.transform.position;
@@ -40,12 +42,14 @@ public class LevelChange : MonoBehaviour
     {
         if (_isWaveActive)
         {
-            if (_waveGameObject.transform.position == _waveEndPosition)
+            if (_waveGameObject.transform.position.x <= _waveEndPosition.x)
             {
                 _isWaveActive = false;
                 _waveGameObject.transform.position = _waveStartPosition;
+                _waveRb.velocity = Vector3.zero;
             }
-            _waveGameObject.transform.position = Vector3.MoveTowards(_waveGameObject.transform.position, _waveEndPosition, _waveSpeed * Time.deltaTime);
+            _waveRb.AddForce(Vector3.left * _waveSpeed * Time.deltaTime);
+            //_waveGameObject.transform.position = Vector3.MoveTowards(_waveGameObject.transform.position, _waveEndPosition, _waveSpeed * Time.deltaTime);
         }
     }
 

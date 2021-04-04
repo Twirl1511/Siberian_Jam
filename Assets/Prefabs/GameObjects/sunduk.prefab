@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -4807162228458962468}
   - component: {fileID: 498887383656973986}
   - component: {fileID: 5762686597446545996}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: sunduk
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2916286884751735303}
   - component: {fileID: 2294409107044496802}
   - component: {fileID: 4049747224205066600}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2920471558391832326}
   - component: {fileID: 2920471558391832327}
   - component: {fileID: 2920471558391832324}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tower
   m_TagString: Block
   m_Icon: {fileID: 0}

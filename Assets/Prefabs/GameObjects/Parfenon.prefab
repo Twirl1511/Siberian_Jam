@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7918558907859223363}
   - component: {fileID: 3700657877469671744}
   - component: {fileID: 1216122076412950208}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Parfenon
   m_TagString: Block
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 4357099455018624023}
   - component: {fileID: 853534709670603698}
   - component: {fileID: 3187609562902503288}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
