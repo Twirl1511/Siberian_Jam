@@ -7,6 +7,7 @@ public class PlayerCutsceneController : MonoBehaviour
     [SerializeField] private Transform[] _waypoints;
     [SerializeField] private float[] _speed;
     [SerializeField] private Transform _anyBlockPos;
+    [SerializeField] private FinalSceneController _finalSceneController;
     [SerializeField] private CameraFollow _cameraFollow;
     private int _currentWaypoint = 0;
     private Vector3 _basePosition;
@@ -88,7 +89,8 @@ public class PlayerCutsceneController : MonoBehaviour
     private void EnableEndVideo()
     {
         sequence.Kill();
-        Destroy(gameObject);
+        _finalSceneController.EnableScene();
+        gameObject.SetActive(false);
     }
 
     private void FindTopPos()

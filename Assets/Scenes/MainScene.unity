@@ -322,6 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07cd3238c61904040882dcc9df15e220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 8469837469521577808}
   _mainMenuPanel: {fileID: 63453883}
   _pausePanel: {fileID: 375697826}
   _pauseButton: {fileID: 1510173138}
@@ -2702,11 +2703,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce0ea610e4445b4195bccb24f399127, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _menuController: {fileID: 89088807}
   _deadFishImage: {fileID: 708484961}
   _fadePanel: {fileID: 1825304771}
   _voiceOne: {fileID: 8300000, guid: f5c4a6d2474311745891162b5a652192, type: 3}
-  _voiceTwo: {fileID: 0}
-  _unitazSound: {fileID: 0}
+  _voiceTwo: {fileID: 8300000, guid: 4a962d3b3271ac84dbb23c146b497acc, type: 3}
+  _unitazSound: {fileID: 8300000, guid: aa2bb2eb3acfed543a25a30fd9bb63e5, type: 3}
+  _aquariumBulk: {fileID: 8300000, guid: ed08c61471db31d4487fa29b5eb09600, type: 3}
 --- !u!4 &898066560
 Transform:
   m_ObjectHideFlags: 0
@@ -7017,6 +7020,7 @@ MonoBehaviour:
   - 6
   - 7
   _anyBlockPos: {fileID: 1418411632}
+  _finalSceneController: {fileID: 898066559}
   _cameraFollow: {fileID: 519420030}
 --- !u!114 &8469837469521577810
 MonoBehaviour:
