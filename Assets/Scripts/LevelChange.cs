@@ -50,32 +50,37 @@ public class LevelChange : MonoBehaviour
                 _waveRb.velocity = Vector3.zero;
             }
             _waveRb.AddForce(Vector3.left * _waveSpeed * Time.deltaTime);
-            //_waveGameObject.transform.position = Vector3.MoveTowards(_waveGameObject.transform.position, _waveEndPosition, _waveSpeed * Time.deltaTime);
         }
-    }
-
-    private void BackScreening()
-    {
-        //_blackScreenSpriteRenderer.
     }
 
 
     public void OnRestart()
     {
         WaterIteraction._objectsOutOfWater.Clear();
-        //Destroy(_levelObjects[WaterUp._currentLevelIndex]); 
         Destroy(_currentLevelObjects);
         _currentLevelObjects = Instantiate(_levelObjects[WaterUp._currentLevelIndex + 1]);
+        //StartCoroutine(FirstCloud(1));
+        ShowCloud();
     }
 
     public void NextLevelAnimation()
     {
         MenuController.IsPaused = true;
-        StartCoroutine(SceneSwitcher(_timeBtwFrames));
+        StartCoroutine(SceneSwitcher(1));
     }
 
-    
-
+    public void ShowCloud()
+    {
+        StartCoroutine(FirstCloud(1));
+    }
+    IEnumerator FirstCloud(float sec)
+    {
+        yield return new WaitForSeconds(sec);
+        _clouds[WaterUp._currentLevelIndex + 1].SetActive(true);
+        yield return new WaitForSeconds(4);
+        _clouds[WaterUp._currentLevelIndex + 1].SetActive(false);
+        MenuController.IsPaused = false;
+    }
 
     IEnumerator SceneSwitcher(float seconds)
     {
@@ -96,8 +101,6 @@ public class LevelChange : MonoBehaviour
         
         yield return new WaitForSeconds(2);
         
-        
-        
         /// ������� ������� ������ ����
         _fadePanel.TurnOn(null);
         /// ������� ������� �� �����
@@ -108,11 +111,8 @@ public class LevelChange : MonoBehaviour
         }
         _fadePanel.TurnOff(null);
         /// ������� ����� ������� �� �����
+        
         OnRestart();
-        MenuController.IsPaused = false;
-
-        /// ����� ��� ������
-        /// MenuController.IsPaused = false;
     }
 
     private void DestroyTower()
